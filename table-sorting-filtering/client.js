@@ -101,4 +101,7 @@
     let nextState = CHECKED_STATE_TRANSITION[$th.$button.getAttribute('aria-checked')]
     onSort(colIdx, nextState)
   }
+
+  // Activate JavaScript-only features
+  document.querySelectorAll(':is(button, label)[hidden]').forEach($ => $.hidden = false)
 }
