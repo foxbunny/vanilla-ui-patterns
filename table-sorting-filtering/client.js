@@ -50,7 +50,7 @@
 
   let
     filterTable = () => {
-      let kwd = $searchInput.value.trim()
+      let kwd = $searchInput.value.trim().toLowerCase()
       if (kwd) $$tableRows.forEach($tr => $tr.hidden = !$tr.firstElementChild.textContent.includes(kwd))
       else $$tableRows.forEach($tr => $tr.hidden = false)
     },
