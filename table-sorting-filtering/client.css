@@ -1,0 +1,71 @@
+body {
+  width: max-content;
+  max-width: 60rem;
+  margin: 0 auto;
+}
+
+body, table-sort-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+button {
+  cursor: pointer;
+}
+
+button, input {
+  font: inherit;
+}
+
+label {
+  cursor: pointer;
+  display: block;
+}
+
+thead th {
+  cursor: pointer;
+}
+
+th button {
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+th button[aria-checked="undefined"]::before {
+  filter: grayscale(1);
+}
+
+th button[aria-checked="false"]::before {
+  content: '🔺';
+}
+
+th button[aria-checked="undefined"]::before,
+th button[aria-checked="true"]::before {
+  content: '🔻';
+}
+
+th button span {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+}
+
+tbody th {
+  text-transform: uppercase;
+}
+
+tbody :is(td, th) {
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+}
+
+tr :first-child {
+  text-align: left;
+}
+
+tr :not(:first-child) {
+  text-align: right;
+  padding-left: 2em;
+}
