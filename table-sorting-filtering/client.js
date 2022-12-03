@@ -9,6 +9,16 @@
     }
 
   let
+    // Data type of the columns are marked using the 'data-type' attribute in
+    // the respective column headers.
+    //
+    // We have generic functions for handling typical scenarios that we may
+    // have in our app based on the column type. This is done so that we may
+    // add new columns later without having to significantly modify the code.
+    //
+    // This is not necessary if you do not anticipate changes to the table at
+    // a later date as the trade-off is additional complexity. Sometimes
+    // hard-coding stuff makes the code simpler.
     valueGetter = {
       number: $td => Number($td.textContent.trim()),
       string: $td => $td.textContent.trim(),
@@ -53,17 +63,32 @@
   let
     filterTable = () => {
       let kwd = $searchInput.value.trim().toLowerCase()
+      // Filtering means simply hiding the elements that do not match. We have
+      // two cases here. One is when the keyword is specified, and another
+      // when the keyword is blank. When the keyword is specified, we test
+      // whether the keyword is contained within the text of the first column
+      // (order ID) and hide the rows where this is not the case. In the
+      // second case, we unhide all rows.
       if (kwd) $$tableRows.forEach($tr => $tr.hidden = !$tr.firstElementChild.textContent.includes(kwd))
       else $$tableRows.forEach($tr => $tr.hidden = false)
     },
     updateSortOrderMarker = (colIdx, sortOrder) =>
       $$th.forEach(($th, i) => $th.setAttribute('aria-sort', i === colIdx ? sortOrder : 'none')),
+    // We use a hidden live region to announce changes in the sort order.
+    // If a screen reader user activate the sort button, the text inserted
+    // into the live region is automatically read.
     announceSortOrder = (colIdx, sortOrder) =>
       $hiddenAnnoucement.textContent = `sorted ${sortOrder} by ${$$colLabels[colIdx].textContent}`,
     sortTable = (colIdx, sortOrder) => {
       let
         colType = colTypes[colIdx],
         compare = comparers[colType][sortOrder]
+      // We first sort the plain array containing table rows based on the
+      // specified sort order. Then we append the rows to the <tbody> in correct
+      // order. When an element is appended to another element, it is
+      // automatically removed from its original position. The final order of
+      // the element will therefore match the order in the array once all
+      // elements are appended.
       $$tableRows.sort(($a, $b) => compare($a.values[colIdx], $b.values[colIdx]))
       for (let $tr of $$tableRows) $tbody.append($tr)
     }
@@ -95,7 +120,9 @@
   // Filtering and sorting are completely independent and can be applied in
   // any order. Therefore, the simplest solution is to apply them in
   // whatever order user happens to performs them. They also do not need
-  // to be applied together.
+  // to be applied together. This works because filtering simply hides the
+  // elements, rather than completely removing them from the DOM tree, so they
+  // remain sortable even after the filter is applied!
   $searchInput.oninput = debounce(50, onFilter)
   $thead.onclick = ev => {
     let $th = ev.target.closest('th')
