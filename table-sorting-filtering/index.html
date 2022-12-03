@@ -20,25 +20,27 @@
       <input type="search" placeholder="Order ID">
     </label>
 
+    <span id="hidden-sort-order-announcement" aria-live="polite"></span>
+
     <table>
       <thead>
         <tr>
           <th scope="row" data-type="string" aria-sort="none">
             <span>
-              Order ID
-              <button><span>Change sort order</span></button>
+              <span>Order ID</span>
+              <button><span>Sort by order ID</span></button>
             </span>
           </th>
           <th scope="row" data-type="number" aria-sort="none">
             <span>
-              Price (USD)
-              <button><span>Change sort order</span></button>
+              <span>Price (USD)</span>
+              <button><span>Sort by price</span></button>
             </span>
           </th>
           <th scope="row" data-type="time" aria-sort="descending">
             <span>
-              Last purchase
-              <button><span>Change sort order</span></button>
+              <span>Purchase date</span>
+              <button><span>Sort by purchase date</span></button>
             </span>
           </th>
         </tr>

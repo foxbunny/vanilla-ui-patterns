@@ -61,16 +61,16 @@ tbody :is(td, th) {
   padding-bottom: 0.25em;
 }
 
-tr :first-child {
+tr > :first-child {
   text-align: left;
 }
 
-tr :not(:first-child) {
+tr > :not(:first-child) {
   text-align: right;
   padding-left: 2em;
 }
 
-thead th span {
+thead th > span {
   display: flex;
   align-items: center;
   gap: 0.5ch;
@@ -78,4 +78,10 @@ thead th span {
 
 thead th:not(:first-child) span {
   flex-direction: row-reverse;
+}
+
+#hidden-sort-order-announcement {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
 }

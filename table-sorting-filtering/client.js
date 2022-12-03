@@ -44,8 +44,10 @@
     $searchInput = document.querySelector('input[type="search"]'),
     $thead = document.querySelector('thead'),
     $$th = Array.from($thead.querySelectorAll('th')),
+    $$colLabels = Array.from($thead.querySelectorAll('th > span > span')),
     $tbody = document.querySelector('tbody'),
     $$tableRows = Array.from($tbody.children),
+    $hiddenAnnoucement = document.getElementById('hidden-sort-order-announcement'),
     colTypes = $$th.map($ => $.dataset.type)
 
   let
@@ -56,6 +58,8 @@
     },
     updateSortOrderMarker = (colIdx, sortOrder) =>
       $$th.forEach(($th, i) => $th.setAttribute('aria-sort', i === colIdx ? sortOrder : 'none')),
+    announceSortOrder = (colIdx, sortOrder) =>
+      $hiddenAnnoucement.textContent = `sorted ${sortOrder} by ${$$colLabels[colIdx].textContent}`,
     sortTable = (colIdx, sortOrder) => {
       let
         colType = colTypes[colIdx],
@@ -68,6 +72,7 @@
     onSort = (colIdx, sortOrder) => {
       sortTable(colIdx, sortOrder)
       updateSortOrderMarker(colIdx, sortOrder)
+      announceSortOrder(colIdx, sortOrder)
     },
     onFilter = filterTable
 
