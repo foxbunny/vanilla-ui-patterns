@@ -2,10 +2,10 @@
   'use strict'
 
   let
-    CHECKED_STATE_TRANSITION = {
-      undefined: true,
-      false: true,
-      true: false,
+    SORT_ORDER_TRANSITION = {
+      none: 'descending',
+      ascending: 'descending',
+      descending: 'ascending',
     }
 
   let
@@ -20,12 +20,12 @@
       return colIndex
     },
     compareNumber = {
-      true: (a, b) => b - a,
-      false: (a, b) => a - b,
+      ascending: (a, b) => a - b,
+      descending: (a, b) => b - a,
     },
     compareString = {
-      true: (a, b) => b.localeCompare(a),
-      false: (a, b) => a.localeCompare(b),
+      ascending: (a, b) => a.localeCompare(b),
+      descending: (a, b) => b.localeCompare(a),
     },
     comparers = {
       number: compareNumber,
@@ -54,22 +54,20 @@
       if (kwd) $$tableRows.forEach($tr => $tr.hidden = !$tr.firstElementChild.textContent.includes(kwd))
       else $$tableRows.forEach($tr => $tr.hidden = false)
     },
-    updateSortButtonStates = (colIdx, isDesc) =>
-      $$th.forEach(($th, i) => $th.querySelector('button')
-        .setAttribute('aria-checked', i === colIdx ? isDesc : 'undefined'),
-      ),
-    sortTable = (colIdx, isDesc) => {
+    updateSortOrderMarker = (colIdx, sortOrder) =>
+      $$th.forEach(($th, i) => $th.setAttribute('aria-sort', i === colIdx ? sortOrder : 'none')),
+    sortTable = (colIdx, sortOrder) => {
       let
         colType = colTypes[colIdx],
-        compare = comparers[colType][isDesc]
+        compare = comparers[colType][sortOrder]
       $$tableRows.sort(($a, $b) => compare($a.values[colIdx], $b.values[colIdx]))
       for (let $tr of $$tableRows) $tbody.append($tr)
     }
 
   let
-    onSort = (colIdx, isDesc) => {
-      updateSortButtonStates(colIdx, isDesc)
-      sortTable(colIdx, isDesc)
+    onSort = (colIdx, sortOrder) => {
+      sortTable(colIdx, sortOrder)
+      updateSortOrderMarker(colIdx, sortOrder)
     },
     onFilter = filterTable
 
@@ -96,9 +94,9 @@
   $searchInput.oninput = debounce(50, onFilter)
   $thead.onclick = ev => {
     let $th = ev.target.closest('th')
-    if (!$th?.$button) return
+    if (!$th?.hasAttribute('aria-sort')) return
     let colIdx = columnIndex($th)
-    let nextState = CHECKED_STATE_TRANSITION[$th.$button.getAttribute('aria-checked')]
+    let nextState = SORT_ORDER_TRANSITION[$th.getAttribute('aria-sort')]
     onSort(colIdx, nextState)
   }
 

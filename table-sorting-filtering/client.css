@@ -33,17 +33,17 @@ th button {
   padding: 0;
 }
 
-th button[aria-checked="undefined"]::before {
-  filter: grayscale(1);
+th[aria-sort="ascending"] button::before {
+  content: '▲';
 }
 
-th button[aria-checked="false"]::before {
-  content: '🔺';
+th[aria-sort="none"] button::before,
+th[aria-sort="descending"] button::before {
+  content: '▼';
 }
 
-th button[aria-checked="undefined"]::before,
-th button[aria-checked="true"]::before {
-  content: '🔻';
+th:not([aria-sort="none"]) button::before {
+  color: #dd3333;
 }
 
 th button span {
@@ -68,4 +68,14 @@ tr :first-child {
 tr :not(:first-child) {
   text-align: right;
   padding-left: 2em;
+}
+
+thead th span {
+  display: flex;
+  align-items: center;
+  gap: 0.5ch;
+}
+
+thead th:not(:first-child) span {
+  flex-direction: row-reverse;
 }

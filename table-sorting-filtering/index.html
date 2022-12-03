@@ -23,23 +23,23 @@
     <table>
       <thead>
         <tr>
-          <th scope="row" data-type="string">
-            Order ID
-            <button aria-checked="undefined" role="checkbox" hidden>
-              <span>Sort column descending</span>
-            </button>
+          <th scope="row" data-type="string" aria-sort="none">
+            <span>
+              Order ID
+              <button><span>Change sort order</span></button>
+            </span>
           </th>
-          <th scope="row" data-type="number">
-            <button aria-checked="undefined" role="checkbox" hidden>
-              <span>Sort column descending</span>
-            </button>
-            Price (USD)
+          <th scope="row" data-type="number" aria-sort="none">
+            <span>
+              Price (USD)
+              <button><span>Change sort order</span></button>
+            </span>
           </th>
-          <th scope="row" data-type="time">
-            <button aria-checked="true" role="checkbox" hidden>
-              <span>Sort column descending</span>
-            </button>
-            Last purchase
+          <th scope="row" data-type="time" aria-sort="descending">
+            <span>
+              Last purchase
+              <button><span>Change sort order</span></button>
+            </span>
           </th>
         </tr>
       </thead>
