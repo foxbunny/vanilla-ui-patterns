@@ -54,11 +54,9 @@
 
   {
     // Mark the current tab as active
-    let $currentTab = $tablist.querySelector('a[aria-expanded]')
-    if ($currentTab) {
-      $currentTab.setAttribute('aria-expanded', 'true')
-      $currentTab.$panel.hidden = false
-    }
+    let $currentTab = $$tabs[0]
+    $currentTab.setAttribute('aria-expanded', 'true')
+    $currentTab.$panel.hidden = false
   }
 
   // Enable keyboard navigation for tabs. The recommended navigation for tabs
