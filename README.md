@@ -21,6 +21,11 @@ examples.
 Each example is a sub-folder within this repository. The following examples are 
 available:
 
+### `form-submission`
+
+Example of trapping form submission with custom validation, accessible password 
+demasking, and conversion of form data to JSON.
+
 ### `tabbed-interface`
 
 An example of a classic tab interface.

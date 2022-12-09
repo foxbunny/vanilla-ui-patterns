@@ -1,0 +1,37 @@
+* {
+  box-sizing: border-box;
+}
+
+body,
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+label {
+  display: flex;
+  gap: 0.5em;
+}
+
+label > span {
+  width: 12ch;
+}
+
+label > span[aria-live] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+form > button {
+  width: max-content;
+}
+
+output {
+  margin-top: 1em;
+  white-space: pre;
+  font-family: monospace;
+  padding: 1em;
+  border: 1px solid black;
+}
