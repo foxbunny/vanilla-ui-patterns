@@ -21,6 +21,10 @@ examples.
 Each example is a sub-folder within this repository. The following examples are 
 available:
 
+### `tabbed-interface`
+
+An example of a classic tab interface.
+
 ### `table-sorting-filtering`
 
 An example of DOM-infused state to facilitate sorting and filtering of a table.

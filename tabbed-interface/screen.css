@@ -1,0 +1,26 @@
+* {
+  box-sizing: border-box;
+}
+
+[role=tablist] {
+  display: flex;
+  border-bottom: 1px solid #ddd;
+  padding: 0;
+  gap: 0.2em;
+}
+
+[role=tab] {
+  padding: 0.2em 0.5em;
+  border: 1px solid #ddd;
+  border-bottom: none;
+  text-decoration: none;
+  color: inherit;
+}
+
+[role=tab]:not([aria-expanded=true]) {
+  background: #ddd;
+}
+
+[role=tabpanel] {
+  max-width: 80ch;
+}
