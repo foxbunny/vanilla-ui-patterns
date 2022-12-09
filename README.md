@@ -28,3 +28,25 @@ An example of a classic tab interface.
 ### `table-sorting-filtering`
 
 An example of DOM-infused state to facilitate sorting and filtering of a table.
+
+## Concepts
+
+The following concepts are applied in the examples.
+
+### DOM-infused state
+
+The technique of using the DOM itself as the single source of truth for the 
+application. For a (relatively) small performance overhead, we gain the ability
+to specify application state using just HTML without requiring expensive state
+conversion during initialization.
+
+### Delegated event handling
+
+The technique of attaching event handlers to a single common ancestor rather 
+than multiple individual elements. This technique is employed for one of two 
+reasons:
+
+- To simplify event handling in cases where the concrete element on which 
+  the event was triggered does not matter.
+- To allow for additional children to be added without having to attach 
+  event listeners to them.
