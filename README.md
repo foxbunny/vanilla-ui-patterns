@@ -69,3 +69,20 @@ reasons:
   the event was triggered does not matter.
 - To allow for additional children to be added without having to attach 
   event listeners to them.
+
+### Blocks
+
+In all JavaScript modules, you will see blocks enclosing the entire script. 
+They look like this:
+
+```javascript
+{
+  'use strict'
+  
+  // code
+}
+```
+
+Using blocks and `let` keyword (instead of `var`) within them, we prevent 
+variables from leaking into the global scope and avoid their reassignment by a 
+foreign script.
