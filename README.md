@@ -57,7 +57,10 @@ The following concepts are applied in the examples.
 The technique of using the DOM itself as the single source of truth for the 
 application. For a (relatively) small performance overhead, we gain the ability
 to specify application state using just HTML without requiring expensive state
-conversion during initialization.
+conversion during initialization. 
+
+When doing SSR, the client-side application and the server generating the HTML 
+can share the state by encoding it in HTML.
 
 ### Delegated event handling
 
