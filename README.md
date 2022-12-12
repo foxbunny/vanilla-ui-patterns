@@ -21,6 +21,10 @@ examples.
 Each example is a sub-folder within this repository. The following examples are 
 available:
 
+### `dark-mode`
+
+Example of a dark mode toggle with `localStorage` persistence and CSS variables.
+
 ### `form-submission`
 
 Example of trapping form submission with custom validation, accessible password 

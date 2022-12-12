@@ -1,0 +1,103 @@
+:root {
+  --color-bg: white;
+  --color-fg: black;
+  --color-link-normal: blue;
+  --color-link-visited: purple;
+  --mode-transition: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.dark {
+  /**
+  We only use CSS variables for the dark mode functionality. There is no need
+  td do anything other than just toggle this class on the body element.
+  This class can also be used on elements within the page that are always dark
+  regardless of the page theme.
+
+  The dark mode is a 'presentational' class (see [1]). We normally strive to
+  eliminate presentational classes from the code. However, this is an exception
+  as themes are generally a presentation-centric concept and have nothing to
+  do with document structure whatsoever.
+
+  Note that there is no need for the '.light' because that's the default styling
+  of the page.
+
+  [1] https://medium.com/@hayavuk/what-the-class-f2c88556d623
+   */
+  --color-bg: black;
+  --color-fg: white;
+  --color-link-normal: #4e8cff;
+  --color-link-visited: #de79de;
+}
+
+[data-animation-enabled] {
+  /*
+  If transitions are always enabled, page will blink in dark mode during
+  initial load and between page transitions. To prevent this, we use some
+  JavaScript to manually enable animations after page load and disable it
+  before we move to the next page.
+   */
+  --mode-transition: 0.5s;
+}
+
+body, a {
+  /**
+  It's a good idea to enumerate all selectors that are subject to dark-mode
+  transition animations. It's a pain to have to hunt them down later if we want
+  to change something.
+   */
+  transition: color var(--mode-transition), background-color var(--mode-transition);
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-fg);
+}
+
+a {
+  color: var(--color-link-normal);
+}
+
+a:visited {
+  color: var(--color-link-visited);
+}
+
+#dark-mode-toggle {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 2em;
+  height: 2em;
+  overflow: hidden;
+}
+
+#dark-mode-toggle :is(span, svg) {
+  position: absolute;
+}
+
+#dark-mode-toggle span {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#dark-mode-toggle svg {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  transition: transform 0.3s;
+}
+
+#dark-mode-toggle svg:first-of-type {
+  left: 0;
+}
+
+#dark-mode-toggle svg:last-of-type {
+  left: 100%;
+}
+
+.dark #dark-mode-toggle svg {
+  transform: translateX(-100%);
+}
