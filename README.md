@@ -31,20 +31,20 @@ the comments within the sources.
 
 The following examples are available:
 
-### `dark-mode`
+### [`dark-mode`](./dark-mode)
 
 Example of a dark mode toggle with `localStorage` persistence and CSS variables.
 
-### `form-submission`
+### [`form-submission`](./form-submission)
 
 Example of trapping form submission with custom validation, accessible password 
 demasking, and conversion of form data to JSON.
 
-### `tabbed-interface`
+### [`tabbed-interface`](./tabbed-interface)
 
 An example of a classic tab interface.
 
-### `table-sorting-filtering`
+### [`table-sorting-filtering`](./table-sorting-filtering)
 
 An example of DOM-infused state to facilitate sorting and filtering of a table.
 
