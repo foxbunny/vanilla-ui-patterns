@@ -16,6 +16,14 @@ Development server can be used but not needed. If you wish to use one, the
 project root contains an `index.html` file that links to the individual 
 examples.
 
+## Why are these pages so ugly??
+
+In order to keep the amount of code to the bare essentials needed to 
+demonstrate the concepts, the styling of the pages is left mostly stock except
+for the styling that is relevant for the demonstration. The goal of this
+repository is not to impress you with the design and sell you something you 
+don't want or need. 😉
+
 ## Examples
 
 Each example is a sub-folder within this repository. The following examples are 
