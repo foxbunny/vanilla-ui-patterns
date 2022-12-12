@@ -18,11 +18,11 @@ examples.
 
 ## Why are these pages so ugly??
 
-In order to keep the amount of code to the bare essentials needed to 
-demonstrate the concepts, the styling of the pages is left mostly stock except
-for the styling that is relevant for the demonstration. The goal of this
-repository is not to impress you with the design and sell you something you 
-don't want or need. 😉
+In order to reduce distraction, the amount of code is kept to the bare 
+essentials needed to demonstrate the concepts. The styling of the pages is 
+left mostly stock except for the styling that is relevant for the demonstration. 
+The goal of this repository is not to impress you with the design and sell 
+you something you don't want or need. 😉
 
 ## Examples
 
