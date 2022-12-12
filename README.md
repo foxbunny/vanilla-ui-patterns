@@ -75,7 +75,7 @@ reasons:
 
 ### Blocks
 
-In all JavaScript modules, you will see 
+In all JavaScript files, you will see 
 [blocks](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/block) 
 enclosing the entire script. They look like this:
 
