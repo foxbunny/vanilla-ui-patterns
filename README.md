@@ -48,6 +48,10 @@ An example of a classic tab interface.
 
 An example of DOM-infused state to facilitate sorting and filtering of a table.
 
+### [`toasts`](./toasts)
+
+Example of accessible toasts (alerts).
+
 ## Concepts
 
 The following concepts are applied in the examples.
