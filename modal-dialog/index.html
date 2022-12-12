@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Modal Dialog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" media="screen" href="screen.css">
+    <script defer src="client.js"></script>
+  </head>
+  <body>
+    <h1>Modal dialog</h1>
+
+    <button id="open-dialog" hidden>Open the dialog</button>
+
+    <dialog id="dialog">
+      <!--
+      Click-traps are used to prevent accidental clicks on elements below the
+      dialog, and also to close the dialog when user clicks outside its content
+      -->
+      <div id="dialog-click-trap"></div>
+
+      <!--
+      tabindex=-1 allows JavaScript to focus the element, but keeps it out of
+      the normal tab order during keyboard navigation.
+      -->
+      <article tabindex="-1">
+        <header>
+          <h2>Some modal content</h2>
+          <button id="close-dialog" aria-keyshortcuts="Escape">Close <span aria-hidden="true">✖</span></button>
+        </header>
+
+        <p>
+          Pellentesque sit amet lorem vitae tellus pellentesque eleifend at id odio. Praesent ac quam purus. Vestibulum nec libero cursus lacus consectetur consequat id vel ex. Morbi maximus tortor eros, vitae facilisis ex ornare vitae. Ut sapien nibh, porta ut ante in, vehicula sodales felis. Cras malesuada eros eget nunc sagittis rhoncus. Nunc a vehicula nisi, a finibus tellus. Integer erat ligula, convallis eu lobortis in, tempor sit amet tortor. Nullam tincidunt, odio malesuada tincidunt posuere, purus ligula aliquam elit, eget blandit orci justo et nisl.
+        </p>
+      </article>
+    </dialog>
+  </body>
+</html>

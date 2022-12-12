@@ -1,0 +1,73 @@
+* {
+  box-sizing: border-box;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* We select the [open] to postpone the processing of these styles until the dialog is open */
+dialog[open],
+dialog[open] header {
+  display: flex;
+  align-items: center;
+}
+
+dialog[open] {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  padding: 1em;
+  justify-content: center;
+  border: none;
+  background: transparent;
+}
+
+dialog[open] #dialog-click-trap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+dialog[open] article {
+  position: relative;
+  background: white;
+  max-width: 120ch;
+  padding: 2em 1em;
+}
+
+dialog[open] header {
+  background: black;
+  color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2em;
+  padding: 0.2em 1em;
+  justify-content: space-between;
+}
+
+dialog[open] h2 {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+}
+
+dialog[open] button {
+  background: transparent;
+  border: none;
+  color: inherit;
+  font: inherit;
+}
+
+dialog p {
+  max-width: 80ch;
+}

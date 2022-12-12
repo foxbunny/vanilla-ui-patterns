@@ -40,6 +40,10 @@ Example of a dark mode toggle with `localStorage` persistence and CSS variables.
 Example of trapping form submission with custom validation, accessible password 
 demasking, and conversion of form data to JSON.
 
+### [`modal-dialog`](./modal-dialog)
+
+Example of a modal dialog with click-trap.
+
 ### [`tabbed-interface`](./tabbed-interface)
 
 An example of a classic tab interface.
