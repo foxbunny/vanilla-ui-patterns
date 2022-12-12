@@ -15,7 +15,12 @@
   let
     // Note: return value of the toggleAttribute() method is true if the attribute got toggled on
     toggleDarkMode = () => localStorage.darkMode = document.body.classList.toggle('dark'),
-    restoreDarkMode = () => document.body.classList.toggle('dark', localStorage.darkMode === 'true'),
+    // To find out more about the 'prefers-color-scheme' media query, see
+    // https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme
+    // and the Rendering tab in chrome dev tools (look at more tools menu if not shown)
+    restoreDarkMode = () => document.body.classList.toggle('dark', localStorage.darkMode == null
+        ? matchMedia?.('prefers-color-scheme: dark')
+        : localStorage.darkMode === 'true'),
     enableAnimation = () => document.body.setAttribute('data-animation-enabled', 'true'),
     disableAnimation = () => document.body.removeAttribute('data-animation-enabled')
 
