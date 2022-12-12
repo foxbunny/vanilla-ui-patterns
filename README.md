@@ -26,8 +26,10 @@ don't want or need. 😉
 
 ## Examples
 
-Each example is a sub-folder within this repository. The following examples are 
-available:
+Each example is a sub-folder within this repository. The explanations are in 
+the comments within the sources.
+
+The following examples are available:
 
 ### `dark-mode`
 
