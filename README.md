@@ -46,6 +46,10 @@ Example of a dark mode toggle with `localStorage` persistence and CSS variables.
 Example of trapping form submission with custom validation, accessible password 
 demasking, and conversion of form data to JSON.
 
+### [`image-carousel`](./image-carousel)
+
+Photo carousel with mobile support and responsive images.
+
 ### [`modal-dialog`](./modal-dialog)
 
 Example of a modal dialog with click-trap.
