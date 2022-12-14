@@ -26,9 +26,15 @@
 
   // Disable transitions during page load and page transitions
   window.addEventListener('beforeunload', disableAnimation)
+
   // We enable animations after the browser is finished with layout/paint. The
-  // callback with 0 time out will still not run until those are done.
-  setTimeout(enableAnimation)
+  // callback with a non-zero timeout will be forced to wait for the rendering
+  // pipeline to finish its thing. We use the smallest non-zero timeout of 1.
+  //
+  // More information here:
+  //
+  // https://levelup.gitconnected.com/the-live-dom-is-not-slow-bad-or-wrong-web-developers-are-2bf86c3b9e2e
+  setTimeout(enableAnimation, 1)
 
   // Add the button to the page
   $header.append(Object.assign($darkModeToggle, { onclick: toggleDarkMode }))
