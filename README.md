@@ -12,9 +12,15 @@ All examples are "run" by opening the `index.html` file located in the
 example folder. Alternatively, some editors and IDEs support previews which 
 are effective for these examples. 
 
-Development server can be used but not needed. If you wish to use one, the
-project root contains an `index.html` file that links to the individual 
-examples.
+## Benchmarks
+
+The project includes some benchmarks. They are all located within the 
+`benchmarks` folder with `index.html` containing their listing.
+
+Running benchmarks is a simple matter of following the links. Links open in 
+a new tab because that's how they are intended to run. You should not have 
+devtools open while the benchmarks are running because devtools can skew the 
+results.
 
 ## Why are these pages so ugly??
 
