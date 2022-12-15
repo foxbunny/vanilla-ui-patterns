@@ -3,30 +3,6 @@
 }
 
 :root {
-  --image-w: 480px;
-}
-
-body {
-  overflow-x: hidden;
-}
-
-#scrollbar-hider[data-active] {
-  /*
-    I personally have nothing against scrollbars, and I think they should stay.
-    But I just know that most designers will want them gone or style them.
-    Might as well show you how to hide them. We can remove scrollbars without
-    significantly affecting the UX because we will add dots to act as a
-    scrollbar. However, since the replacement scrollbar (dots) only work when
-    JavaScript is active, we will 'activate' the scrollbar hider by adding
-    a data-active attribute via JavaScript. Here, in CSS, we use this attribute
-    as part of the selector so that this declaration block applies only when
-    we know JS is active and the scrollbar is no longer needed.
-   */
-  overflow: hidden;
-  height: calc(0.5em + var(--image-w));
-}
-
-#photo-list {
   /*
     Why do we use pixels here? Because we are dealing with fixed pixel size
     images. Can we make the carousel dynamic width? Yes we can, but we'd need
@@ -35,6 +11,14 @@ body {
     the code simple (which is always preferred in my book), we're making the
     carousel width fixed.
    */
+  --image-w: 480px;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+#photo-list {
   --image-width: var(--image-w);
   --cols: 3;
   --col-gap: 0.2em; /* can't use just 0 here, because that screws up the calc below */
@@ -58,12 +42,39 @@ body {
   scroll-behavior: smooth;
 }
 
+#photo-list[data-active]::-webkit-scrollbar {
+  /*
+    While I personally don't mind scrollbars, UX designers generally hate them.
+    Understandable given how ugly they are on some platforms, and that they
+    generally don't fit well with most designs. Since we are duplicating the
+    scrollbar behavior with the dot indicators anyway, we can disable the
+    scrollbars in this case, rather than styling them differently. We only do
+    so when the data-active attribute is set from the JavaScript side, so that
+    we're not removing the scrollbar until the alternative UI is actually
+    working.
+
+    https://css-tricks.com/almanac/properties/s/scrollbar/
+   */
+  height: 0;
+  opacity: 0;
+}
+
+#photo-list[data-active] {
+  /*
+    This is the scrollbar hider code for Firefox. This is actually only
+    supported by Firefox even though it looks like a standard CSS rule.
+
+    https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Scrollbars
+   */
+  scrollbar-color: transparent transparent;
+  scrollbar-width: none;
+}
+
 #photo-list li {
   flex-shrink: 0;
   list-style: none;
 
   width: var(--image-w);
-  height: var(--image-w);
   max-width: 100%;
 
   scroll-snap-align: center;

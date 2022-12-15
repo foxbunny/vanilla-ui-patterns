@@ -51,5 +51,5 @@
   }
 
   $dotIndicators.hidden = false
-  document.getElementById('scrollbar-hider').setAttribute('data-active', 'true')
+  $photoList.dataset.active = 'true'
 }
