@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Image carousel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" media="screen" href="screen.css">
+    <script defer src="client.js"></script>
+  </head>
+  <body>
+    <h1>Image carousel</h1>
+
+    <div id="scrollbar-hider">
+      <ul id="photo-list">
+        <li>
+          <a id="photo-1" href="01.html" title="Full photograph">
+            <img
+              srcset="photos/macro_sq_01_480.webp, photos/macro_sq_01_960.webp 2x"
+              src="photos/macro_sq_01.jpg"
+              alt="Detail from the Dandelion seeds photograph"
+              loading="lazy"
+            >
+          </a>
+        </li>
+        <li>
+          <a id="photo-2" href="02.html" title="Full photograph">
+            <img
+              srcset="photos/macro_sq_02_480.webp, photos/macro_sq_02_960.webp 2x"
+              src="photos/macro_sq_02.jpg"
+              alt="Detail from the Water droplet on grass photograph"
+              loading="lazy"
+            >
+          </a>
+        </li>
+        <li>
+          <a id="photo-3" href="03.html" title="Full photograph">
+            <img
+              srcset="photos/macro_sq_03_480.webp, photos/macro_sq_03_960.webp 2x"
+              src="photos/macro_sq_03.jpg"
+              alt="Detail from the Dandelion photograph"
+              loading="lazy"
+            >
+          </a>
+        </li>
+        <li>
+          <a id="photo-4" href="04.html" title="Full photograph">
+            <img
+              srcset="photos/macro_sq_04_480.webp, photos/macro_sq_04_960.webp 2x"
+              src="photos/macro_sq_04.jpg"
+              alt="Detail from the Hibiscus photograph"
+              loading="lazy"
+            >
+          </a>
+        </li>
+        <li>
+          <a id="photo-5" href="05.html" title="Full photograph">
+            <img
+              srcset="photos/macro_sq_05_480.webp, photos/macro_sq_05_960.webp 2x"
+              src="photos/macro_sq_05.jpg"
+              alt="Detail from the Thistle flower photograph"
+              loading="lazy"
+            >
+          </a>
+        </li>
+        <li>
+          <a id="photo-6" href="06.html" title="Full photograph">
+            <img
+              srcset="photos/macro_sq_06_480.webp, photos/macro_sq_06_960.webp 2x"
+              src="photos/macro_sq_06.jpg"
+              alt="Detail from the Lover shield bugs photograph"
+              loading="lazy"
+            >
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!--
+    Dot indicators are a JavaScript-only replacement for the scrollbar.
+    Typically, UX designers don't like scrollbars as they are ugly. Also, in
+    this particular case, since we are dealing with a small and discrete number
+    of items, navigating around them is quicker (for visual users) when using
+    dots. Since the list itself can also be navigated using a keyboard, this
+    control is redundant and does not need be accessible. We're using a
+    non-semantic div that will not be announced by screen-readers nor accept
+    keyboard navigation. It's strictly for JavaScript-enabled visual users with
+    pointer devices.
+
+    We could populate the entire subtree within the dot indicators div, but
+    since it's a JavaScript only feature, we don't want to bloat the HTML too
+    much. We create the children in JavaScript.
+    -->
+    <div id="dot-indicators" hidden></div>
+  </body>
+</html>

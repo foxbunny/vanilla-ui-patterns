@@ -1,0 +1,117 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --image-w: 480px;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+#scrollbar-hider[data-active] {
+  /*
+    I personally have nothing against scrollbars, and I think they should stay.
+    But I just know that most designers will want them gone or style them.
+    Might as well show you how to hide them. We can remove scrollbars without
+    significantly affecting the UX because we will add dots to act as a
+    scrollbar. However, since the replacement scrollbar (dots) only work when
+    JavaScript is active, we will 'activate' the scrollbar hider by adding
+    a data-active attribute via JavaScript. Here, in CSS, we use this attribute
+    as part of the selector so that this declaration block applies only when
+    we know JS is active and the scrollbar is no longer needed.
+   */
+  overflow: hidden;
+  height: calc(0.5em + var(--image-w));
+}
+
+#photo-list {
+  /*
+    Why do we use pixels here? Because we are dealing with fixed pixel size
+    images. Can we make the carousel dynamic width? Yes we can, but we'd need
+    to address the different image sizes that we might have, and dynamic
+    dimensions and fixed dimensions mix as well as oil and water. To keep
+    the code simple (which is always preferred in my book), we're making the
+    carousel width fixed.
+   */
+  --image-width: var(--image-w);
+  --cols: 3;
+  --col-gap: 0.2em; /* can't use just 0 here, because that screws up the calc below */
+
+  width: calc(var(--col-gap) * (var(--cols) - 1) + var(--image-width) * var(--cols));
+  max-width: 100%;
+
+  display: flex;
+  gap: var(--col-gap);
+  overflow-x: auto;
+  padding: 0.5em 0 1em; /* allow the focus frame to become more visible by adding a gap between the scrollbar and the content */
+  margin: 0 auto;
+
+  /*
+    Make each child snap to the edge of this container. See here for more
+    information:
+
+    https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Scroll_Snap/Basic_concepts
+   */
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+
+#photo-list li {
+  flex-shrink: 0;
+  list-style: none;
+
+  width: var(--image-w);
+  height: var(--image-w);
+  max-width: 100%;
+
+  scroll-snap-align: center;
+}
+
+#photo-list a {
+  display: flex;
+}
+
+#photo-list img {
+  width: 100%;
+  transform: scale(0.95);
+  transition: transform 0.3s;
+}
+
+#photo-list a:is(:focus, :hover) img {
+  transform: scale(1);
+}
+
+#dot-indicators:not([hidden]) {
+  display: flex;
+  gap: 1em;
+  width: max-content;
+  margin: 1em auto;
+}
+
+#dot-indicators span {
+  display: block;
+  width: 1.4em;
+  height: 1.4em;
+
+  /* hide the text */
+  overflow: hidden;
+  white-space: nowrap;
+  text-indent: 100vh;
+  cursor: pointer;
+}
+
+#dot-indicators span::before {
+  content: '';
+  display: block;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  border: 0.2em solid #555;
+  background: transparent;
+}
+
+#dot-indicators span[data-visible=true]::before {
+  background: #555;
+}
