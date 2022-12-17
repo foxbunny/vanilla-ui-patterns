@@ -41,6 +41,10 @@ The following examples are available:
 
 Example of a dark mode toggle with `localStorage` persistence and CSS variables.
 
+### [`drag-sort`](./drag-sort)
+
+List of items that can be ordered using drag & drop, including touch support.
+
 ### [`form-submission`](./form-submission)
 
 Example of trapping form submission with custom validation, accessible password 

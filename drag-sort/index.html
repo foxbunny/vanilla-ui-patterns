@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Drag sort</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" media="screen" href="screen.css">
+    <script defer src="client.js"></script>
+  </head>
+  <body>
+    <h1>Drag sort</h1>
+
+    <form id="tasks" action="/order-endpoint" method="post">
+      <fieldset tabindex="0" aria-label="Task (use Up and Down arrow to change the priority)">
+        <input type="hidden" name="id" value="12">
+
+        <label>
+          <span>Priority:</span>
+          <input type="number" name="priority" value="1">
+        </label>
+
+        <label>
+          Task title:
+          <input type="text" name="title" value="Improve image carousel layout">
+        </label>
+
+        <label>
+          <input type="checkbox" name="completed">
+          Completed
+        </label>
+      </fieldset>
+
+      <fieldset tabindex="0" aria-label="Task (use Up and Down arrow to change the priority)">
+        <input type="hidden" name="id" value="9">
+
+        <label>
+          <span>Priority:</span>
+          <input type="number" name="priority" value="2">
+        </label>
+
+        <label>
+          Task title:
+          <input type="text" name="title" value="Add tooltip example">
+        </label>
+
+        <label>
+          <input type="checkbox" name="completed">
+          Completed
+        </label>
+      </fieldset>
+
+      <fieldset tabindex="0" aria-label="Task (use Up and Down arrow to change the priority)">
+        <input type="hidden" name="id" value="1">
+
+        <label>
+          <span>Priority:</span>
+          <input type="number" name="priority" value="3">
+        </label>
+
+        <label>
+          Task title:
+          <input type="text" name="title" value="Add drag and drop example">
+        </label>
+
+        <label>
+          <input type="checkbox" name="completed">
+          Completed
+        </label>
+      </fieldset>
+
+      <fieldset tabindex="0" aria-label="Task (use Up and Down arrow to change the priority)">
+        <input type="hidden" name="id" value="4">
+
+        <label>
+          <span>Priority:</span>
+          <input type="number" name="priority" value="4">
+        </label>
+
+        <label>
+          Task title:
+          <input type="text" name="title" value="Take a break">
+        </label>
+
+        <label>
+          <input type="checkbox" name="completed" checked>
+          Completed
+        </label>
+      </fieldset>
+    </form>
+  </body>
+</html>
