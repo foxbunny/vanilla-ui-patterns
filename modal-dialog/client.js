@@ -16,18 +16,14 @@
     },
     closeDialog = () => $dialog.open = false
 
-  let
-    onOpenDialog = openDialog,
-    onDialogClose = closeDialog
-
   Object.assign($openDialog, {
-    onclick: onOpenDialog,
+    onclick: openDialog,
     hidden: false,
   })
   $closeDialog.onclick = $dialogClickTrap.onclick = onDialogClose
   window.addEventListener('keyup', ev => {
     if (ev.code !== 'Escape') return
     if (!$dialog.open) return
-    onDialogClose()
+    closeDialog()
   })
 }

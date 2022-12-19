@@ -79,28 +79,9 @@
     },
     updateTaskPriorities = () => {
       for (let i = 0; i < $tasks.children.length; i++)
-        $tasks.children[i].querySelector('input[name=priority]').value = i + 1
-    }
-
-  let
-    onStartDrag = $task => {
-      markTaskAsDragging($task)
-      markFormAsDragging()
+        $tasks.children[i].elements.priority.value = i + 1
     },
-    onDragOver = $target => {
-      let $task = $tasks.$draggedTask
-      // If we are currently swapping elements, do nothing
-      if ($task.isAnimating) return
-      // If we're dragging over the element being dragged, ignore it
-      if ($task === $target) return
-      swapElements($task, $target)
-    },
-    onFinalizeDrag = () => {
-      unmarkDraggedTaskAsDragging()
-      unmarkFormAsDragging()
-      updateTaskPriorities()
-    },
-    onSwapTask = ($task, $target) => {
+    swapElementsNow = ($task, $target) => {
       markTaskAsDragging($task)
       swapElements($task, $target)
         .then(unmarkDraggedTaskAsDragging)
@@ -120,15 +101,29 @@
   document.body.append($dragGhost)
 
   $tasks.ondragstart = ev => {
-    onStartDrag(ev.target)
+    markTaskAsDragging(ev.target)
+    markFormAsDragging()
     ev.dataTransfer.setDragImage($dragGhost, 0, 0)
   }
   $tasks.ondragover = ev => {
     // dragover will also trigger on the form itself, which we ignore
     if (!ev.target.matches('fieldset')) return
-    onDragOver(ev.target)
+
+    let
+      $task = $tasks.$draggedTask,
+      $target = ev.target
+
+    // If we are currently swapping elements, do nothing
+    if ($task.isAnimating) return
+    // If we're dragging over the element being dragged, ignore it
+    if ($task === $target) return
+    swapElements($task, $target)
   }
-  $tasks.ondragend = onFinalizeDrag
+  $tasks.ondragend = () => {
+    unmarkDraggedTaskAsDragging()
+    unmarkFormAsDragging()
+    updateTaskPriorities()
+  }
   $tasks.onkeydown = ev => {
     if (!ev.target.matches('fieldset')) return
 
@@ -137,11 +132,11 @@
     switch (ev.code) {
       case 'ArrowUp':
         if (!$task.previousElementSibling) return
-        onSwapTask($task, $task.previousElementSibling)
+        swapElementsNow($task, $task.previousElementSibling)
         break
       case 'ArrowDown':
         if (!$task.nextElementSibling) return
-        onSwapTask($task, $task.nextElementSibling)
+        swapElementsNow($task, $task.nextElementSibling)
         break
     }
   }

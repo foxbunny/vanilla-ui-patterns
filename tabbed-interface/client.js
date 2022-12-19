@@ -20,13 +20,6 @@
       requestAnimationFrame(() => $tab.$panel.focus())
     }
 
-  let
-    onNextTabFocus = focusNextTab,
-    onPrevTabFocus = focusPrevTab,
-    onFocusTab = $tab => {
-      unfocusCurrentTab()
-      focusTab($tab)
-    }
 
   // We add ARIA roles and attributes for two reasons. Firstly, we want to avoid
   // bloating the HTML with attributes that only have meaning when JavaScript is
@@ -70,19 +63,20 @@
       case 'ArrowDown':
       case 'ArrowRight':
         ev.preventDefault()
-        onNextTabFocus()
+        focusNextTab()
         break
       case 'ArrowUp':
       case 'ArrowLeft':
         ev.preventDefault()
-        onPrevTabFocus()
+        focusPrevTab()
         break
       case 'Tab':
         if (ev.shiftKey) return
         ev.preventDefault()
         let $activeTab = document.activeElement
         if (!$activeTab) break
-        onFocusTab($activeTab)
+        unfocusCurrentTab()
+        focusTab($activeTab)
         break
     }
   }

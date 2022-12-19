@@ -41,8 +41,9 @@
       setTimeout(() => $fakeActionResult.textContent = '', 7000)
     }
 
-  let
-    onFakeAction = () => {
+  Object.assign($fakeAction, {
+    hidden: false,
+    onclick: () => {
       clearToasts()
       announceProgress()
       doFakeAction()
@@ -50,11 +51,7 @@
           () => announceSuccess(),
           () => announceError('There was an error'),
         )
-    }
-
-  Object.assign($fakeAction, {
-    hidden: false,
-    onclick: onFakeAction,
+    },
   })
   $fakeActionResult.hidden = false
 }

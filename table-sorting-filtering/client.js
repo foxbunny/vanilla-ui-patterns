@@ -57,7 +57,7 @@
     $$colLabels = Array.from($thead.querySelectorAll('th > span > span')),
     $tbody = document.querySelector('tbody'),
     $$tableRows = Array.from($tbody.children),
-    $hiddenAnnoucement = document.getElementById('hidden-sort-order-announcement'),
+    $hiddenAnnouncement = document.getElementById('hidden-sort-order-announcement'),
     colTypes = $$th.map($ => $.dataset.type)
 
   let
@@ -78,7 +78,7 @@
     // If a screen reader user activate the sort button, the text inserted
     // into the live region is automatically read.
     announceSortOrder = (colIdx, sortOrder) =>
-      $hiddenAnnoucement.textContent = `sorted ${sortOrder} by ${$$colLabels[colIdx].textContent}`,
+      $hiddenAnnouncement.textContent = `sorted ${sortOrder} by ${$$colLabels[colIdx].textContent}`,
     sortTable = (colIdx, sortOrder) => {
       let
         colType = colTypes[colIdx],
@@ -92,14 +92,6 @@
       $$tableRows.sort(($a, $b) => compare($a.values[colIdx], $b.values[colIdx]))
       for (let $tr of $$tableRows) $tbody.append($tr)
     }
-
-  let
-    onSort = (colIdx, sortOrder) => {
-      sortTable(colIdx, sortOrder)
-      updateSortOrderMarker(colIdx, sortOrder)
-      announceSortOrder(colIdx, sortOrder)
-    },
-    onFilter = filterTable
 
   // We store the deserialized values of every cell as an array in each
   // row's 'values' property. It takes about 1~2ms on a good desktop.
@@ -123,13 +115,16 @@
   // to be applied together. This works because filtering simply hides the
   // elements, rather than completely removing them from the DOM tree, so they
   // remain sortable even after the filter is applied!
-  $searchInput.oninput = debounce(50, onFilter)
+  $searchInput.oninput = debounce(50, filterTable)
   $thead.onclick = ev => {
     let $th = ev.target.closest('th')
     if (!$th?.hasAttribute('aria-sort')) return
     let colIdx = columnIndex($th)
     let nextState = SORT_ORDER_TRANSITION[$th.getAttribute('aria-sort')]
-    onSort(colIdx, nextState)
+
+    sortTable(colIdx, nextState)
+    updateSortOrderMarker(colIdx, nextState)
+    announceSortOrder(colIdx, nextState)
   }
 
   // Activate JavaScript-only features
