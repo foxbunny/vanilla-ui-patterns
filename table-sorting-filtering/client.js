@@ -69,11 +69,12 @@
       // whether the keyword is contained within the text of the first column
       // (order ID) and hide the rows where this is not the case. In the
       // second case, we unhide all rows.
-      if (kwd) $$tableRows.forEach($tr => $tr.hidden = !$tr.firstElementChild.textContent.includes(kwd))
+      if (kwd) for (let $tr of $$tableRows) $tr.hidden = !$tr.firstElementChild.textContent.includes(kwd)
       else $$tableRows.forEach($tr => $tr.hidden = false)
     },
-    updateSortOrderMarker = (colIdx, sortOrder) =>
-      $$th.forEach(($th, i) => $th.setAttribute('aria-sort', i === colIdx ? sortOrder : 'none')),
+    updateSortOrderMarker = (colIdx, sortOrder) => {
+      for (let i = $$th.length; i--;) $$th[i].setAttribute('aria-sort', i === colIdx ? sortOrder : 'none')
+    },
     // We use a hidden live region to announce changes in the sort order.
     // If a screen reader user activate the sort button, the text inserted
     // into the live region is automatically read.
@@ -95,19 +96,17 @@
 
   // We store the deserialized values of every cell as an array in each
   // row's 'values' property. It takes about 1~2ms on a good desktop.
-  $$tableRows.forEach($tr => {
+  for (let $tr of $$tableRows) {
     let values = $tr.values = []
     for (let i = 0, $td; $td = $tr.children[i]; i++) {
       let type = colTypes[i]
       values.push(valueGetter[type]($td))
     }
-  })
+  }
 
   // Cache the button in the TH elements so we don't need to query for it
   // every time
-  $$th.forEach($th => {
-    $th.$button = $th.querySelector('button')
-  })
+  for (let $th of $$th) $th.$button = $th.querySelector('button')
 
   // Filtering and sorting are completely independent and can be applied in
   // any order. Therefore, the simplest solution is to apply them in
@@ -128,5 +127,5 @@
   }
 
   // Activate JavaScript-only features
-  document.querySelectorAll(':is(button, label)[hidden]').forEach($ => $.hidden = false)
+  for (let $ of document.querySelectorAll(':is(button, label)[hidden]')) $.hidden = false
 }
