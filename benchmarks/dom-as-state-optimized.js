@@ -6,9 +6,8 @@
     originalHTML = $tableBody.innerHTML,
     // by price ascending
     sort = () => {
-      let $$rows = Array.from($tableBody.children)
-      $$rows.sort(($a, $b) => $a.__price - $b.__price)
-      for (let $ of $$rows) $tableBody.append($)
+      for (let $ of Array.from($tableBody.children).sort(($a, $b) => $a.__price - $b.__price))
+        $tableBody.append($)
     },
     // only purchases made in march any year
     filter = () => {
