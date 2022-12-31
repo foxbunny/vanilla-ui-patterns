@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Tag search & selection</title>
+    <link rel="stylesheet" media="screen" href="screen.css">
+    <script defer src="client.js"></script>
+  </head>
+  <body>
+    <form>
+      <fieldset id="tag-search" hidden>
+        <label for="search">Search by tags:</label>
+        <fieldset id="selected-tags"></fieldset>
+        <input id="search" type="text" list="search-completions">
+        <datalist id="search-completions">
+        </datalist>
+      </fieldset>
+      <fieldset id="tags">
+        <label><input type="checkbox" name="tag" value="1"> clothing</label>
+        <label><input type="checkbox" name="tag" value="2"> accessories</label>
+        <label><input type="checkbox" name="tag" value="3"> art supplies</label>
+        <label><input type="checkbox" name="tag" value="4"> electronics</label>
+        <label><input type="checkbox" name="tag" value="5"> phones</label>
+        <label><input type="checkbox" name="tag" value="6"> photography</label>
+        <label><input type="checkbox" name="tag" value="7"> hunting</label>
+        <label><input type="checkbox" name="tag" value="8"> tools</label>
+        <label><input type="checkbox" name="tag" value="9"> food</label>
+        <label><input type="checkbox" name="tag" value="10"> toys</label>
+        <label><input type="checkbox" name="tag" value="11"> books</label>
+      </fieldset>
+    </form>
+  </body>
+</html>

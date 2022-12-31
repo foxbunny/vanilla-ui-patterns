@@ -66,6 +66,10 @@ An example of a classic tab interface.
 
 An example of DOM-infused state to facilitate sorting and filtering of a table.
 
+### [`tag-select`](./tag-select)
+
+Tag selection with search.
+
 ### [`toasts`](./toasts)
 
 Example of accessible toasts (alerts).

@@ -1,0 +1,68 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+button, input {
+  font: inherit;
+  color: inherit;
+}
+
+label, button {
+  cursor: pointer;
+}
+
+label,
+button,
+#selected-tags {
+  flex: none;
+}
+
+#tags,
+#tag-search,
+#selected-tags {
+  padding: 0;
+}
+
+#tags,
+#selected-tags {
+  border: none;
+}
+
+#tag-search:not([hidden]) {
+  display: flex;
+  gap: 0.2em;
+  border: 1px solid black;
+  border-radius: 0.2em;
+  padding: 0.5em;
+  align-items: center;
+}
+
+#search {
+  width: 100%;
+  padding: 0.2em;
+}
+
+#selected-tags {
+  display: flex;
+  gap: 0.2em;
+}
+
+#selected-tags label {
+  border: 1px solid black;
+  background: #d2d1d1;
+  padding: 0.2em 0.5em;
+  border-radius: 0.2em;
+}
+
+#selected-tags label:focus-within {
+  outline: medium solid;
+}
+
+#selected-tags input[type=checkbox] {
+  opacity: 0;
+  position: absolute;
+}
