@@ -27,11 +27,15 @@
         this.samples++
       }
     },
-    doRun = (fn, timer) => {
-      timer.start()
-      return fn(timer.samples).then(() => {
-        if (timer.sample()) return timer
-        return doRun(fn, timer)
+    doRun = (fn, timer, teardown) => {
+      let ready = Promise.resolve()
+      if (teardown) ready = ready.then(teardown)
+      return ready.then(() => {
+        timer.start()
+        return fn(timer.samples).then(teardown => {
+          if (timer.sample()) return timer
+          return doRun(fn, timer, teardown)
+        })
       })
     },
     writeResults = timer => {

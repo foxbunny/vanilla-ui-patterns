@@ -1,0 +1,2128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Use DOM as state (optimized/hybrid)</title>
+    <script defer src="benchmark.js"></script>
+    <script defer src="dom-as-state-optimized.js"></script>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th scope="col" data-type="string" aria-sort="none">
+            Order ID
+          </th>
+          <th scope="col" data-type="number" aria-sort="none">
+            Price (USD)
+          </th>
+          <th scope="col" data-type="time" aria-sort="descending">
+            Purchase date
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="rlworew78m">
+          <th scope="row">rlworew78m</th>
+          <td>8.87</td>
+          <td>
+            <time datetime="2022-11-29T11:31:00.963Z">11/29/2022</time>
+          </td>
+        </tr>
+        <tr id="7fodvdwn09n">
+          <th scope="row">7fodvdwn09n</th>
+          <td>17.95</td>
+          <td>
+            <time datetime="2022-11-18T04:19:37.715Z">11/18/2022</time>
+          </td>
+        </tr>
+        <tr id="ngxrtix0cr">
+          <th scope="row">ngxrtix0cr</th>
+          <td>12.15</td>
+          <td>
+            <time datetime="2022-11-11T14:33:14.120Z">11/11/2022</time>
+          </td>
+        </tr>
+        <tr id="7178dgwy7zw">
+          <th scope="row">7178dgwy7zw</th>
+          <td>15.21</td>
+          <td>
+            <time datetime="2022-11-09T07:58:51.681Z">11/9/2022</time>
+          </td>
+        </tr>
+        <tr id="8pj7ye0y68p">
+          <th scope="row">8pj7ye0y68p</th>
+          <td>16.95</td>
+          <td>
+            <time datetime="2022-11-07T21:31:01.642Z">11/7/2022</time>
+          </td>
+        </tr>
+        <tr id="v5ngdzkonl8">
+          <th scope="row">v5ngdzkonl8</th>
+          <td>8.35</td>
+          <td>
+            <time datetime="2022-11-04T11:10:06.212Z">11/4/2022</time>
+          </td>
+        </tr>
+        <tr id="ydhuuc9cr9q">
+          <th scope="row">ydhuuc9cr9q</th>
+          <td>5.42</td>
+          <td>
+            <time datetime="2022-10-31T21:13:43.728Z">10/31/2022</time>
+          </td>
+        </tr>
+        <tr id="0uq86863mizi">
+          <th scope="row">0uq86863mizi</th>
+          <td>4.65</td>
+          <td>
+            <time datetime="2022-10-29T17:56:23.275Z">10/29/2022</time>
+          </td>
+        </tr>
+        <tr id="cz8twezjhn5">
+          <th scope="row">cz8twezjhn5</th>
+          <td>8.03</td>
+          <td>
+            <time datetime="2022-10-27T13:07:02.681Z">10/27/2022</time>
+          </td>
+        </tr>
+        <tr id="caxii3pkfuf">
+          <th scope="row">caxii3pkfuf</th>
+          <td>16.59</td>
+          <td>
+            <time datetime="2022-10-24T15:03:25.520Z">10/24/2022</time>
+          </td>
+        </tr>
+        <tr id="k6pi8ldzd6">
+          <th scope="row">k6pi8ldzd6</th>
+          <td>15.37</td>
+          <td>
+            <time datetime="2022-10-12T07:43:37.029Z">10/12/2022</time>
+          </td>
+        </tr>
+        <tr id="f7mwmr70kh">
+          <th scope="row">f7mwmr70kh</th>
+          <td>3.57</td>
+          <td>
+            <time datetime="2022-10-09T05:39:04.855Z">10/9/2022</time>
+          </td>
+        </tr>
+        <tr id="zm8o2y0jvj">
+          <th scope="row">zm8o2y0jvj</th>
+          <td>9.92</td>
+          <td>
+            <time datetime="2022-10-09T04:40:57.005Z">10/9/2022</time>
+          </td>
+        </tr>
+        <tr id="2lw0uach0gc">
+          <th scope="row">2lw0uach0gc</th>
+          <td>12.35</td>
+          <td>
+            <time datetime="2022-10-08T22:36:51.870Z">10/9/2022</time>
+          </td>
+        </tr>
+        <tr id="a1axeklmp3q">
+          <th scope="row">a1axeklmp3q</th>
+          <td>7.50</td>
+          <td>
+            <time datetime="2022-10-08T07:36:56.833Z">10/8/2022</time>
+          </td>
+        </tr>
+        <tr id="xe04j7lvk2l">
+          <th scope="row">xe04j7lvk2l</th>
+          <td>19.35</td>
+          <td>
+            <time datetime="2022-10-03T21:10:41.477Z">10/3/2022</time>
+          </td>
+        </tr>
+        <tr id="7m651omcm9c">
+          <th scope="row">7m651omcm9c</th>
+          <td>10.14</td>
+          <td>
+            <time datetime="2022-10-03T02:42:29.605Z">10/3/2022</time>
+          </td>
+        </tr>
+        <tr id="p11nnq2kso">
+          <th scope="row">p11nnq2kso</th>
+          <td>9.91</td>
+          <td>
+            <time datetime="2022-10-02T02:14:49.451Z">10/2/2022</time>
+          </td>
+        </tr>
+        <tr id="51na9vwnfxt">
+          <th scope="row">51na9vwnfxt</th>
+          <td>2.03</td>
+          <td>
+            <time datetime="2022-09-30T23:14:04.033Z">10/1/2022</time>
+          </td>
+        </tr>
+        <tr id="x7mghv61clk">
+          <th scope="row">x7mghv61clk</th>
+          <td>19.36</td>
+          <td>
+            <time datetime="2022-09-27T07:36:01.810Z">9/27/2022</time>
+          </td>
+        </tr>
+        <tr id="4bt9w0cdywl">
+          <th scope="row">4bt9w0cdywl</th>
+          <td>6.81</td>
+          <td>
+            <time datetime="2022-09-25T04:35:31.717Z">9/25/2022</time>
+          </td>
+        </tr>
+        <tr id="ln12xuow1f">
+          <th scope="row">ln12xuow1f</th>
+          <td>0.93</td>
+          <td>
+            <time datetime="2022-09-25T02:30:26.122Z">9/25/2022</time>
+          </td>
+        </tr>
+        <tr id="osdglykbpfa">
+          <th scope="row">osdglykbpfa</th>
+          <td>15.36</td>
+          <td>
+            <time datetime="2022-09-23T18:33:32.832Z">9/23/2022</time>
+          </td>
+        </tr>
+        <tr id="dmfrt0a2p2c">
+          <th scope="row">dmfrt0a2p2c</th>
+          <td>8.91</td>
+          <td>
+            <time datetime="2022-09-21T07:26:38.432Z">9/21/2022</time>
+          </td>
+        </tr>
+        <tr id="cphh0kc0y5m">
+          <th scope="row">cphh0kc0y5m</th>
+          <td>0.65</td>
+          <td>
+            <time datetime="2022-09-16T04:30:29.718Z">9/16/2022</time>
+          </td>
+        </tr>
+        <tr id="ru2szpubrun">
+          <th scope="row">ru2szpubrun</th>
+          <td>3.97</td>
+          <td>
+            <time datetime="2022-09-14T10:56:23.898Z">9/14/2022</time>
+          </td>
+        </tr>
+        <tr id="bvzcoeh4fgv">
+          <th scope="row">bvzcoeh4fgv</th>
+          <td>11.05</td>
+          <td>
+            <time datetime="2022-09-11T05:05:34.274Z">9/11/2022</time>
+          </td>
+        </tr>
+        <tr id="ycwmr2mems">
+          <th scope="row">ycwmr2mems</th>
+          <td>3.46</td>
+          <td>
+            <time datetime="2022-09-08T03:58:10.861Z">9/8/2022</time>
+          </td>
+        </tr>
+        <tr id="l0pu0443g0o">
+          <th scope="row">l0pu0443g0o</th>
+          <td>17.12</td>
+          <td>
+            <time datetime="2022-09-05T10:25:00.508Z">9/5/2022</time>
+          </td>
+        </tr>
+        <tr id="ru6qqrc2q3">
+          <th scope="row">ru6qqrc2q3</th>
+          <td>9.74</td>
+          <td>
+            <time datetime="2022-09-04T17:45:19.647Z">9/4/2022</time>
+          </td>
+        </tr>
+        <tr id="nx5h42rv3vb">
+          <th scope="row">nx5h42rv3vb</th>
+          <td>11.77</td>
+          <td>
+            <time datetime="2022-08-27T21:14:00.059Z">8/27/2022</time>
+          </td>
+        </tr>
+        <tr id="kfrstl8ii09">
+          <th scope="row">kfrstl8ii09</th>
+          <td>8.00</td>
+          <td>
+            <time datetime="2022-08-25T06:37:51.996Z">8/25/2022</time>
+          </td>
+        </tr>
+        <tr id="hqmqhosi7ll">
+          <th scope="row">hqmqhosi7ll</th>
+          <td>8.99</td>
+          <td>
+            <time datetime="2022-08-17T00:16:44.760Z">8/17/2022</time>
+          </td>
+        </tr>
+        <tr id="2c5pc34vjix">
+          <th scope="row">2c5pc34vjix</th>
+          <td>8.18</td>
+          <td>
+            <time datetime="2022-08-16T06:53:13.912Z">8/16/2022</time>
+          </td>
+        </tr>
+        <tr id="32qfja0whc8">
+          <th scope="row">32qfja0whc8</th>
+          <td>12.00</td>
+          <td>
+            <time datetime="2022-08-10T09:56:18.613Z">8/10/2022</time>
+          </td>
+        </tr>
+        <tr id="1688m51gstl">
+          <th scope="row">1688m51gstl</th>
+          <td>2.57</td>
+          <td>
+            <time datetime="2022-08-08T07:12:24.592Z">8/8/2022</time>
+          </td>
+        </tr>
+        <tr id="25u9chuhm2y">
+          <th scope="row">25u9chuhm2y</th>
+          <td>16.18</td>
+          <td>
+            <time datetime="2022-08-07T20:33:34.046Z">8/7/2022</time>
+          </td>
+        </tr>
+        <tr id="ogpyzhqnvq">
+          <th scope="row">ogpyzhqnvq</th>
+          <td>14.43</td>
+          <td>
+            <time datetime="2022-08-06T07:17:49.433Z">8/6/2022</time>
+          </td>
+        </tr>
+        <tr id="2kehrn6vs2e">
+          <th scope="row">2kehrn6vs2e</th>
+          <td>7.58</td>
+          <td>
+            <time datetime="2022-08-05T11:17:00.632Z">8/5/2022</time>
+          </td>
+        </tr>
+        <tr id="pvzpt18yx9k">
+          <th scope="row">pvzpt18yx9k</th>
+          <td>15.31</td>
+          <td>
+            <time datetime="2022-07-29T09:19:29.675Z">7/29/2022</time>
+          </td>
+        </tr>
+        <tr id="d99yb8pu6he">
+          <th scope="row">d99yb8pu6he</th>
+          <td>7.51</td>
+          <td>
+            <time datetime="2022-07-28T17:53:13.877Z">7/28/2022</time>
+          </td>
+        </tr>
+        <tr id="uv1cqrbxowa">
+          <th scope="row">uv1cqrbxowa</th>
+          <td>7.37</td>
+          <td>
+            <time datetime="2022-07-19T19:14:48.569Z">7/19/2022</time>
+          </td>
+        </tr>
+        <tr id="o58fs6okz6">
+          <th scope="row">o58fs6okz6</th>
+          <td>8.90</td>
+          <td>
+            <time datetime="2022-07-15T00:56:29.681Z">7/15/2022</time>
+          </td>
+        </tr>
+        <tr id="6tjnzeqeklr">
+          <th scope="row">6tjnzeqeklr</th>
+          <td>6.83</td>
+          <td>
+            <time datetime="2022-07-14T10:00:45.924Z">7/14/2022</time>
+          </td>
+        </tr>
+        <tr id="5navmbuahvw">
+          <th scope="row">5navmbuahvw</th>
+          <td>8.86</td>
+          <td>
+            <time datetime="2022-06-18T11:32:33.538Z">6/18/2022</time>
+          </td>
+        </tr>
+        <tr id="7ncc9rzog2e">
+          <th scope="row">7ncc9rzog2e</th>
+          <td>12.38</td>
+          <td>
+            <time datetime="2022-06-16T12:24:10.423Z">6/16/2022</time>
+          </td>
+        </tr>
+        <tr id="oq2o8iuckl">
+          <th scope="row">oq2o8iuckl</th>
+          <td>16.13</td>
+          <td>
+            <time datetime="2022-06-09T12:59:42.909Z">6/9/2022</time>
+          </td>
+        </tr>
+        <tr id="be8ionwwm6s">
+          <th scope="row">be8ionwwm6s</th>
+          <td>6.06</td>
+          <td>
+            <time datetime="2022-06-07T14:25:21.511Z">6/7/2022</time>
+          </td>
+        </tr>
+        <tr id="m839ft8g5if">
+          <th scope="row">m839ft8g5if</th>
+          <td>10.49</td>
+          <td>
+            <time datetime="2022-06-04T11:44:22.995Z">6/4/2022</time>
+          </td>
+        </tr>
+        <tr id="r40i9svt57">
+          <th scope="row">r40i9svt57</th>
+          <td>18.80</td>
+          <td>
+            <time datetime="2022-06-01T22:35:25.787Z">6/2/2022</time>
+          </td>
+        </tr>
+        <tr id="qxyt3kjahab">
+          <th scope="row">qxyt3kjahab</th>
+          <td>4.23</td>
+          <td>
+            <time datetime="2022-06-01T15:33:42.903Z">6/1/2022</time>
+          </td>
+        </tr>
+        <tr id="br5pn811x0c">
+          <th scope="row">br5pn811x0c</th>
+          <td>8.98</td>
+          <td>
+            <time datetime="2022-05-24T23:09:05.006Z">5/25/2022</time>
+          </td>
+        </tr>
+        <tr id="vf6djv9wohc">
+          <th scope="row">vf6djv9wohc</th>
+          <td>9.76</td>
+          <td>
+            <time datetime="2022-05-20T18:03:31.923Z">5/20/2022</time>
+          </td>
+        </tr>
+        <tr id="oefy9h0n6">
+          <th scope="row">oefy9h0n6</th>
+          <td>5.31</td>
+          <td>
+            <time datetime="2022-05-09T20:47:46.881Z">5/9/2022</time>
+          </td>
+        </tr>
+        <tr id="hzqqmiyc5g9">
+          <th scope="row">hzqqmiyc5g9</th>
+          <td>7.49</td>
+          <td>
+            <time datetime="2022-05-08T15:29:51.373Z">5/8/2022</time>
+          </td>
+        </tr>
+        <tr id="h30eesbh5c4">
+          <th scope="row">h30eesbh5c4</th>
+          <td>0.19</td>
+          <td>
+            <time datetime="2022-05-03T02:18:40.714Z">5/3/2022</time>
+          </td>
+        </tr>
+        <tr id="sndnbs9g3h">
+          <th scope="row">sndnbs9g3h</th>
+          <td>18.96</td>
+          <td>
+            <time datetime="2022-05-02T02:52:20.385Z">5/2/2022</time>
+          </td>
+        </tr>
+        <tr id="732tjqpudlr">
+          <th scope="row">732tjqpudlr</th>
+          <td>2.15</td>
+          <td>
+            <time datetime="2022-04-30T07:23:52.747Z">4/30/2022</time>
+          </td>
+        </tr>
+        <tr id="fludjvdf0x5">
+          <th scope="row">fludjvdf0x5</th>
+          <td>11.58</td>
+          <td>
+            <time datetime="2022-04-23T05:17:46.291Z">4/23/2022</time>
+          </td>
+        </tr>
+        <tr id="swggrizj86n">
+          <th scope="row">swggrizj86n</th>
+          <td>11.32</td>
+          <td>
+            <time datetime="2022-04-16T16:32:25.862Z">4/16/2022</time>
+          </td>
+        </tr>
+        <tr id="dz1qbvxj1y9">
+          <th scope="row">dz1qbvxj1y9</th>
+          <td>3.37</td>
+          <td>
+            <time datetime="2022-04-15T10:19:04.570Z">4/15/2022</time>
+          </td>
+        </tr>
+        <tr id="bv1d3t4p4y5">
+          <th scope="row">bv1d3t4p4y5</th>
+          <td>16.52</td>
+          <td>
+            <time datetime="2022-04-08T00:27:27.792Z">4/8/2022</time>
+          </td>
+        </tr>
+        <tr id="gaz7vmda3d6">
+          <th scope="row">gaz7vmda3d6</th>
+          <td>12.23</td>
+          <td>
+            <time datetime="2022-04-06T23:34:12.448Z">4/7/2022</time>
+          </td>
+        </tr>
+        <tr id="52dmrdchgqf">
+          <th scope="row">52dmrdchgqf</th>
+          <td>0.05</td>
+          <td>
+            <time datetime="2022-04-03T16:32:49.295Z">4/3/2022</time>
+          </td>
+        </tr>
+        <tr id="ttfnxsh0r7k">
+          <th scope="row">ttfnxsh0r7k</th>
+          <td>18.57</td>
+          <td>
+            <time datetime="2022-04-02T09:40:24.323Z">4/2/2022</time>
+          </td>
+        </tr>
+        <tr id="o416r50bm4s">
+          <th scope="row">o416r50bm4s</th>
+          <td>13.68</td>
+          <td>
+            <time datetime="2022-03-27T08:26:51.544Z">3/27/2022</time>
+          </td>
+        </tr>
+        <tr id="yjjbkwmymn">
+          <th scope="row">yjjbkwmymn</th>
+          <td>0.48</td>
+          <td>
+            <time datetime="2022-03-25T04:21:57.477Z">3/25/2022</time>
+          </td>
+        </tr>
+        <tr id="n4qe69sgxyc">
+          <th scope="row">n4qe69sgxyc</th>
+          <td>13.47</td>
+          <td>
+            <time datetime="2022-03-23T04:00:11.919Z">3/23/2022</time>
+          </td>
+        </tr>
+        <tr id="9ca2kc3i6a8">
+          <th scope="row">9ca2kc3i6a8</th>
+          <td>15.24</td>
+          <td>
+            <time datetime="2022-03-19T05:17:58.593Z">3/19/2022</time>
+          </td>
+        </tr>
+        <tr id="tg3tqjanl3">
+          <th scope="row">tg3tqjanl3</th>
+          <td>2.74</td>
+          <td>
+            <time datetime="2022-03-12T20:10:58.076Z">3/12/2022</time>
+          </td>
+        </tr>
+        <tr id="lcpcgf4hcg">
+          <th scope="row">lcpcgf4hcg</th>
+          <td>17.90</td>
+          <td>
+            <time datetime="2022-03-11T06:07:14.297Z">3/11/2022</time>
+          </td>
+        </tr>
+        <tr id="us90ft8r3oh">
+          <th scope="row">us90ft8r3oh</th>
+          <td>2.56</td>
+          <td>
+            <time datetime="2022-03-05T15:58:41.023Z">3/5/2022</time>
+          </td>
+        </tr>
+        <tr id="8xw7dk40fv">
+          <th scope="row">8xw7dk40fv</th>
+          <td>0.54</td>
+          <td>
+            <time datetime="2022-03-03T11:05:37.897Z">3/3/2022</time>
+          </td>
+        </tr>
+        <tr id="448muid7l8n">
+          <th scope="row">448muid7l8n</th>
+          <td>4.51</td>
+          <td>
+            <time datetime="2022-02-28T17:03:15.373Z">2/28/2022</time>
+          </td>
+        </tr>
+        <tr id="9j8fqds4pp9">
+          <th scope="row">9j8fqds4pp9</th>
+          <td>5.72</td>
+          <td>
+            <time datetime="2022-02-26T11:51:22.150Z">2/26/2022</time>
+          </td>
+        </tr>
+        <tr id="gy11p568rt6">
+          <th scope="row">gy11p568rt6</th>
+          <td>11.48</td>
+          <td>
+            <time datetime="2022-02-25T09:51:54.398Z">2/25/2022</time>
+          </td>
+        </tr>
+        <tr id="4glus67vnuu">
+          <th scope="row">4glus67vnuu</th>
+          <td>4.72</td>
+          <td>
+            <time datetime="2022-02-25T05:04:22.021Z">2/25/2022</time>
+          </td>
+        </tr>
+        <tr id="2fsoyu2gx2m">
+          <th scope="row">2fsoyu2gx2m</th>
+          <td>11.06</td>
+          <td>
+            <time datetime="2022-02-19T23:57:21.000Z">2/20/2022</time>
+          </td>
+        </tr>
+        <tr id="eliuoxlx7ig">
+          <th scope="row">eliuoxlx7ig</th>
+          <td>3.26</td>
+          <td>
+            <time datetime="2022-02-19T10:47:50.709Z">2/19/2022</time>
+          </td>
+        </tr>
+        <tr id="8lnega50h2s">
+          <th scope="row">8lnega50h2s</th>
+          <td>3.95</td>
+          <td>
+            <time datetime="2022-02-14T05:59:17.621Z">2/14/2022</time>
+          </td>
+        </tr>
+        <tr id="bwjh4bkxchi">
+          <th scope="row">bwjh4bkxchi</th>
+          <td>1.40</td>
+          <td>
+            <time datetime="2022-02-13T03:26:51.682Z">2/13/2022</time>
+          </td>
+        </tr>
+        <tr id="c47xv6y6psv">
+          <th scope="row">c47xv6y6psv</th>
+          <td>11.32</td>
+          <td>
+            <time datetime="2022-02-12T01:54:15.918Z">2/12/2022</time>
+          </td>
+        </tr>
+        <tr id="e8yidjglnrc">
+          <th scope="row">e8yidjglnrc</th>
+          <td>12.36</td>
+          <td>
+            <time datetime="2022-02-07T12:17:21.980Z">2/7/2022</time>
+          </td>
+        </tr>
+        <tr id="hs4mwy8ss9u">
+          <th scope="row">hs4mwy8ss9u</th>
+          <td>12.56</td>
+          <td>
+            <time datetime="2022-02-02T20:25:12.143Z">2/2/2022</time>
+          </td>
+        </tr>
+        <tr id="8h0mintgzbi">
+          <th scope="row">8h0mintgzbi</th>
+          <td>12.88</td>
+          <td>
+            <time datetime="2022-01-30T02:25:21.522Z">1/30/2022</time>
+          </td>
+        </tr>
+        <tr id="pupsfxxlml9">
+          <th scope="row">pupsfxxlml9</th>
+          <td>18.86</td>
+          <td>
+            <time datetime="2022-01-29T19:55:06.586Z">1/29/2022</time>
+          </td>
+        </tr>
+        <tr id="he71p2y8da">
+          <th scope="row">he71p2y8da</th>
+          <td>12.26</td>
+          <td>
+            <time datetime="2022-01-23T21:32:43.315Z">1/23/2022</time>
+          </td>
+        </tr>
+        <tr id="kviz9o370jr">
+          <th scope="row">kviz9o370jr</th>
+          <td>0.55</td>
+          <td>
+            <time datetime="2022-01-22T01:02:23.913Z">1/22/2022</time>
+          </td>
+        </tr>
+        <tr id="k23vn7lqyxs">
+          <th scope="row">k23vn7lqyxs</th>
+          <td>6.67</td>
+          <td>
+            <time datetime="2022-01-20T18:31:37.915Z">1/20/2022</time>
+          </td>
+        </tr>
+        <tr id="0r2crers2l1o">
+          <th scope="row">0r2crers2l1o</th>
+          <td>11.75</td>
+          <td>
+            <time datetime="2022-01-17T15:33:17.299Z">1/17/2022</time>
+          </td>
+        </tr>
+        <tr id="vnv6fudcqo">
+          <th scope="row">vnv6fudcqo</th>
+          <td>2.56</td>
+          <td>
+            <time datetime="2022-01-10T04:07:24.462Z">1/10/2022</time>
+          </td>
+        </tr>
+        <tr id="3glhmgh2zeb">
+          <th scope="row">3glhmgh2zeb</th>
+          <td>0.77</td>
+          <td>
+            <time datetime="2022-01-08T11:24:24.428Z">1/8/2022</time>
+          </td>
+        </tr>
+        <tr id="m70n3sfjlpk">
+          <th scope="row">m70n3sfjlpk</th>
+          <td>1.03</td>
+          <td>
+            <time datetime="2022-01-08T01:13:58.695Z">1/8/2022</time>
+          </td>
+        </tr>
+        <tr id="u8ryfxrupa8">
+          <th scope="row">u8ryfxrupa8</th>
+          <td>7.25</td>
+          <td>
+            <time datetime="2022-01-02T03:56:23.719Z">1/2/2022</time>
+          </td>
+        </tr>
+        <tr id="xhjtvzu5log">
+          <th scope="row">xhjtvzu5log</th>
+          <td>10.03</td>
+          <td>
+            <time datetime="2021-12-29T23:00:55.967Z">12/30/2021</time>
+          </td>
+        </tr>
+        <tr id="dehxnaicszh">
+          <th scope="row">dehxnaicszh</th>
+          <td>15.25</td>
+          <td>
+            <time datetime="2021-12-25T06:40:02.596Z">12/25/2021</time>
+          </td>
+        </tr>
+        <tr id="x0uo8smjbg">
+          <th scope="row">x0uo8smjbg</th>
+          <td>9.69</td>
+          <td>
+            <time datetime="2021-12-09T07:53:10.627Z">12/9/2021</time>
+          </td>
+        </tr>
+        <tr id="f3vfeulcvhd">
+          <th scope="row">f3vfeulcvhd</th>
+          <td>2.58</td>
+          <td>
+            <time datetime="2021-12-08T15:34:24.057Z">12/8/2021</time>
+          </td>
+        </tr>
+        <tr id="i2jnqy2fn4h">
+          <th scope="row">i2jnqy2fn4h</th>
+          <td>3.00</td>
+          <td>
+            <time datetime="2021-12-06T18:18:50.299Z">12/6/2021</time>
+          </td>
+        </tr>
+        <tr id="nj9jpkjaje">
+          <th scope="row">nj9jpkjaje</th>
+          <td>6.99</td>
+          <td>
+            <time datetime="2021-12-01T07:48:05.604Z">12/1/2021</time>
+          </td>
+        </tr>
+        <tr id="sdczunmwk6i">
+          <th scope="row">sdczunmwk6i</th>
+          <td>13.99</td>
+          <td>
+            <time datetime="2021-11-27T19:05:52.510Z">11/27/2021</time>
+          </td>
+        </tr>
+        <tr id="1pxll13aysh">
+          <th scope="row">1pxll13aysh</th>
+          <td>1.43</td>
+          <td>
+            <time datetime="2021-11-26T05:31:55.415Z">11/26/2021</time>
+          </td>
+        </tr>
+        <tr id="rgbyw9i70p">
+          <th scope="row">rgbyw9i70p</th>
+          <td>6.82</td>
+          <td>
+            <time datetime="2021-11-16T06:21:52.394Z">11/16/2021</time>
+          </td>
+        </tr>
+        <tr id="g1koxkmc2d">
+          <th scope="row">g1koxkmc2d</th>
+          <td>13.18</td>
+          <td>
+            <time datetime="2021-11-08T21:17:43.322Z">11/8/2021</time>
+          </td>
+        </tr>
+        <tr id="xb4nx628kxd">
+          <th scope="row">xb4nx628kxd</th>
+          <td>7.90</td>
+          <td>
+            <time datetime="2021-10-30T06:59:51.334Z">10/30/2021</time>
+          </td>
+        </tr>
+        <tr id="bfk86ldq7jg">
+          <th scope="row">bfk86ldq7jg</th>
+          <td>0.16</td>
+          <td>
+            <time datetime="2021-10-29T07:47:31.538Z">10/29/2021</time>
+          </td>
+        </tr>
+        <tr id="x82kp2q0by">
+          <th scope="row">x82kp2q0by</th>
+          <td>1.20</td>
+          <td>
+            <time datetime="2021-10-24T15:15:21.299Z">10/24/2021</time>
+          </td>
+        </tr>
+        <tr id="jyhhhtz35ul">
+          <th scope="row">jyhhhtz35ul</th>
+          <td>10.54</td>
+          <td>
+            <time datetime="2021-10-24T13:20:57.487Z">10/24/2021</time>
+          </td>
+        </tr>
+        <tr id="a3io76hervq">
+          <th scope="row">a3io76hervq</th>
+          <td>6.29</td>
+          <td>
+            <time datetime="2021-10-21T03:15:36.648Z">10/21/2021</time>
+          </td>
+        </tr>
+        <tr id="6vz3zvwo64q">
+          <th scope="row">6vz3zvwo64q</th>
+          <td>5.94</td>
+          <td>
+            <time datetime="2021-10-21T02:38:02.619Z">10/21/2021</time>
+          </td>
+        </tr>
+        <tr id="xqknv0jzolm">
+          <th scope="row">xqknv0jzolm</th>
+          <td>14.00</td>
+          <td>
+            <time datetime="2021-10-15T04:51:40.015Z">10/15/2021</time>
+          </td>
+        </tr>
+        <tr id="uktm8v1q8cq">
+          <th scope="row">uktm8v1q8cq</th>
+          <td>10.11</td>
+          <td>
+            <time datetime="2021-10-14T10:33:33.211Z">10/14/2021</time>
+          </td>
+        </tr>
+        <tr id="3iabwy8n8xi">
+          <th scope="row">3iabwy8n8xi</th>
+          <td>13.85</td>
+          <td>
+            <time datetime="2021-10-11T02:20:52.359Z">10/11/2021</time>
+          </td>
+        </tr>
+        <tr id="g3vkub949f6">
+          <th scope="row">g3vkub949f6</th>
+          <td>17.94</td>
+          <td>
+            <time datetime="2021-10-10T23:35:25.537Z">10/11/2021</time>
+          </td>
+        </tr>
+        <tr id="2m0uft5kka3">
+          <th scope="row">2m0uft5kka3</th>
+          <td>0.40</td>
+          <td>
+            <time datetime="2021-10-10T22:18:27.155Z">10/11/2021</time>
+          </td>
+        </tr>
+        <tr id="9ui9l4jy904">
+          <th scope="row">9ui9l4jy904</th>
+          <td>13.12</td>
+          <td>
+            <time datetime="2021-10-09T22:49:48.238Z">10/10/2021</time>
+          </td>
+        </tr>
+        <tr id="1xa6vjotibk">
+          <th scope="row">1xa6vjotibk</th>
+          <td>16.78</td>
+          <td>
+            <time datetime="2021-10-09T20:32:10.055Z">10/9/2021</time>
+          </td>
+        </tr>
+        <tr id="etdj33x3p0u">
+          <th scope="row">etdj33x3p0u</th>
+          <td>6.80</td>
+          <td>
+            <time datetime="2021-10-03T23:14:26.943Z">10/4/2021</time>
+          </td>
+        </tr>
+        <tr id="luduss5w1df">
+          <th scope="row">luduss5w1df</th>
+          <td>19.99</td>
+          <td>
+            <time datetime="2021-10-03T06:29:03.854Z">10/3/2021</time>
+          </td>
+        </tr>
+        <tr id="blgc01uyksp">
+          <th scope="row">blgc01uyksp</th>
+          <td>4.12</td>
+          <td>
+            <time datetime="2021-09-30T07:29:29.877Z">9/30/2021</time>
+          </td>
+        </tr>
+        <tr id="fh33xtrw98n">
+          <th scope="row">fh33xtrw98n</th>
+          <td>11.53</td>
+          <td>
+            <time datetime="2021-09-26T22:18:21.188Z">9/27/2021</time>
+          </td>
+        </tr>
+        <tr id="xeegwoe5lqg">
+          <th scope="row">xeegwoe5lqg</th>
+          <td>17.10</td>
+          <td>
+            <time datetime="2021-09-25T09:57:23.926Z">9/25/2021</time>
+          </td>
+        </tr>
+        <tr id="j9ouf7yg7x">
+          <th scope="row">j9ouf7yg7x</th>
+          <td>12.55</td>
+          <td>
+            <time datetime="2021-09-20T10:16:58.604Z">9/20/2021</time>
+          </td>
+        </tr>
+        <tr id="82kvcqrhozh">
+          <th scope="row">82kvcqrhozh</th>
+          <td>3.17</td>
+          <td>
+            <time datetime="2021-09-19T21:26:38.989Z">9/19/2021</time>
+          </td>
+        </tr>
+        <tr id="81oza89lmsu">
+          <th scope="row">81oza89lmsu</th>
+          <td>18.13</td>
+          <td>
+            <time datetime="2021-09-19T02:52:53.098Z">9/19/2021</time>
+          </td>
+        </tr>
+        <tr id="7agadrtyc0u">
+          <th scope="row">7agadrtyc0u</th>
+          <td>1.34</td>
+          <td>
+            <time datetime="2021-09-17T05:00:09.573Z">9/17/2021</time>
+          </td>
+        </tr>
+        <tr id="ld2u4261wed">
+          <th scope="row">ld2u4261wed</th>
+          <td>0.12</td>
+          <td>
+            <time datetime="2021-09-16T07:46:21.275Z">9/16/2021</time>
+          </td>
+        </tr>
+        <tr id="zo183fzc1rn">
+          <th scope="row">zo183fzc1rn</th>
+          <td>3.84</td>
+          <td>
+            <time datetime="2021-09-12T23:18:14.016Z">9/13/2021</time>
+          </td>
+        </tr>
+        <tr id="a84kai76jhh">
+          <th scope="row">a84kai76jhh</th>
+          <td>15.54</td>
+          <td>
+            <time datetime="2021-09-10T10:02:38.123Z">9/10/2021</time>
+          </td>
+        </tr>
+        <tr id="tegfwc0qruk">
+          <th scope="row">tegfwc0qruk</th>
+          <td>16.36</td>
+          <td>
+            <time datetime="2021-09-05T01:29:47.158Z">9/5/2021</time>
+          </td>
+        </tr>
+        <tr id="xge64b1ybas">
+          <th scope="row">xge64b1ybas</th>
+          <td>16.10</td>
+          <td>
+            <time datetime="2021-09-03T09:00:29.765Z">9/3/2021</time>
+          </td>
+        </tr>
+        <tr id="od85anmjh2">
+          <th scope="row">od85anmjh2</th>
+          <td>4.29</td>
+          <td>
+            <time datetime="2021-08-29T04:10:55.716Z">8/29/2021</time>
+          </td>
+        </tr>
+        <tr id="8ph7dtldq5v">
+          <th scope="row">8ph7dtldq5v</th>
+          <td>19.36</td>
+          <td>
+            <time datetime="2021-08-27T10:52:59.093Z">8/27/2021</time>
+          </td>
+        </tr>
+        <tr id="pbvfw6wd0gj">
+          <th scope="row">pbvfw6wd0gj</th>
+          <td>16.26</td>
+          <td>
+            <time datetime="2021-08-24T21:28:20.409Z">8/24/2021</time>
+          </td>
+        </tr>
+        <tr id="wasc1qypnvm">
+          <th scope="row">wasc1qypnvm</th>
+          <td>12.48</td>
+          <td>
+            <time datetime="2021-08-14T17:58:48.020Z">8/14/2021</time>
+          </td>
+        </tr>
+        <tr id="j85mkv38fr">
+          <th scope="row">j85mkv38fr</th>
+          <td>2.45</td>
+          <td>
+            <time datetime="2021-08-03T14:49:23.072Z">8/3/2021</time>
+          </td>
+        </tr>
+        <tr id="c4niz6z96cg">
+          <th scope="row">c4niz6z96cg</th>
+          <td>7.29</td>
+          <td>
+            <time datetime="2021-07-30T09:23:46.390Z">7/30/2021</time>
+          </td>
+        </tr>
+        <tr id="d03svp8micf">
+          <th scope="row">d03svp8micf</th>
+          <td>10.34</td>
+          <td>
+            <time datetime="2021-07-29T21:16:06.507Z">7/29/2021</time>
+          </td>
+        </tr>
+        <tr id="nzvldrcspc">
+          <th scope="row">nzvldrcspc</th>
+          <td>13.40</td>
+          <td>
+            <time datetime="2021-07-29T01:10:46.816Z">7/29/2021</time>
+          </td>
+        </tr>
+        <tr id="oy6v66qnfb">
+          <th scope="row">oy6v66qnfb</th>
+          <td>2.89</td>
+          <td>
+            <time datetime="2021-07-27T01:01:54.413Z">7/27/2021</time>
+          </td>
+        </tr>
+        <tr id="wap25g1g5u">
+          <th scope="row">wap25g1g5u</th>
+          <td>15.15</td>
+          <td>
+            <time datetime="2021-07-26T14:40:23.870Z">7/26/2021</time>
+          </td>
+        </tr>
+        <tr id="9644e9o9nvs">
+          <th scope="row">9644e9o9nvs</th>
+          <td>18.85</td>
+          <td>
+            <time datetime="2021-07-22T21:27:53.706Z">7/22/2021</time>
+          </td>
+        </tr>
+        <tr id="hkupkwo98r6">
+          <th scope="row">hkupkwo98r6</th>
+          <td>9.56</td>
+          <td>
+            <time datetime="2021-07-17T06:43:46.502Z">7/17/2021</time>
+          </td>
+        </tr>
+        <tr id="42e87dll8cu">
+          <th scope="row">42e87dll8cu</th>
+          <td>13.09</td>
+          <td>
+            <time datetime="2021-07-07T02:52:56.681Z">7/7/2021</time>
+          </td>
+        </tr>
+        <tr id="obytfhgier">
+          <th scope="row">obytfhgier</th>
+          <td>1.08</td>
+          <td>
+            <time datetime="2021-07-06T21:00:17.923Z">7/6/2021</time>
+          </td>
+        </tr>
+        <tr id="zafq4t03ybq">
+          <th scope="row">zafq4t03ybq</th>
+          <td>15.81</td>
+          <td>
+            <time datetime="2021-07-05T21:14:28.203Z">7/5/2021</time>
+          </td>
+        </tr>
+        <tr id="xf7un471h2n">
+          <th scope="row">xf7un471h2n</th>
+          <td>4.51</td>
+          <td>
+            <time datetime="2021-07-01T10:37:36.962Z">7/1/2021</time>
+          </td>
+        </tr>
+        <tr id="9uv77cgqtw9">
+          <th scope="row">9uv77cgqtw9</th>
+          <td>1.00</td>
+          <td>
+            <time datetime="2021-07-01T01:47:37.928Z">7/1/2021</time>
+          </td>
+        </tr>
+        <tr id="0eas57cgim5">
+          <th scope="row">0eas57cgim5</th>
+          <td>0.00</td>
+          <td>
+            <time datetime="2021-06-28T17:20:11.304Z">6/28/2021</time>
+          </td>
+        </tr>
+        <tr id="q64ys2yahci">
+          <th scope="row">q64ys2yahci</th>
+          <td>6.40</td>
+          <td>
+            <time datetime="2021-06-27T17:10:55.653Z">6/27/2021</time>
+          </td>
+        </tr>
+        <tr id="p0kkb19u9yn">
+          <th scope="row">p0kkb19u9yn</th>
+          <td>4.11</td>
+          <td>
+            <time datetime="2021-06-26T08:54:23.272Z">6/26/2021</time>
+          </td>
+        </tr>
+        <tr id="7jtdbho2pzu">
+          <th scope="row">7jtdbho2pzu</th>
+          <td>12.08</td>
+          <td>
+            <time datetime="2021-06-19T01:54:05.079Z">6/19/2021</time>
+          </td>
+        </tr>
+        <tr id="nu5hlki07dl">
+          <th scope="row">nu5hlki07dl</th>
+          <td>0.21</td>
+          <td>
+            <time datetime="2021-06-16T10:13:13.877Z">6/16/2021</time>
+          </td>
+        </tr>
+        <tr id="2w01nn1hf4t">
+          <th scope="row">2w01nn1hf4t</th>
+          <td>10.42</td>
+          <td>
+            <time datetime="2021-06-07T12:30:53.683Z">6/7/2021</time>
+          </td>
+        </tr>
+        <tr id="3hu5006j7s7">
+          <th scope="row">3hu5006j7s7</th>
+          <td>17.07</td>
+          <td>
+            <time datetime="2021-06-04T01:57:56.554Z">6/4/2021</time>
+          </td>
+        </tr>
+        <tr id="78rxjpv011y">
+          <th scope="row">78rxjpv011y</th>
+          <td>15.37</td>
+          <td>
+            <time datetime="2021-06-04T00:38:28.206Z">6/4/2021</time>
+          </td>
+        </tr>
+        <tr id="q7taagdqub">
+          <th scope="row">q7taagdqub</th>
+          <td>18.64</td>
+          <td>
+            <time datetime="2021-05-31T18:56:46.708Z">5/31/2021</time>
+          </td>
+        </tr>
+        <tr id="xjr63f79ncs">
+          <th scope="row">xjr63f79ncs</th>
+          <td>15.41</td>
+          <td>
+            <time datetime="2021-05-31T13:51:10.242Z">5/31/2021</time>
+          </td>
+        </tr>
+        <tr id="w0yumztv2d">
+          <th scope="row">w0yumztv2d</th>
+          <td>11.54</td>
+          <td>
+            <time datetime="2021-05-29T15:18:16.373Z">5/29/2021</time>
+          </td>
+        </tr>
+        <tr id="uo9dhah4d9d">
+          <th scope="row">uo9dhah4d9d</th>
+          <td>12.35</td>
+          <td>
+            <time datetime="2021-05-25T18:49:27.221Z">5/25/2021</time>
+          </td>
+        </tr>
+        <tr id="mmeifqo39bc">
+          <th scope="row">mmeifqo39bc</th>
+          <td>0.98</td>
+          <td>
+            <time datetime="2021-05-17T19:24:50.002Z">5/17/2021</time>
+          </td>
+        </tr>
+        <tr id="rf4a83afmu">
+          <th scope="row">rf4a83afmu</th>
+          <td>4.07</td>
+          <td>
+            <time datetime="2021-05-10T23:16:42.042Z">5/11/2021</time>
+          </td>
+        </tr>
+        <tr id="hv2925g6ema">
+          <th scope="row">hv2925g6ema</th>
+          <td>10.34</td>
+          <td>
+            <time datetime="2021-05-08T01:49:58.799Z">5/8/2021</time>
+          </td>
+        </tr>
+        <tr id="hoa35y8j0m">
+          <th scope="row">hoa35y8j0m</th>
+          <td>7.66</td>
+          <td>
+            <time datetime="2021-05-07T23:12:03.912Z">5/8/2021</time>
+          </td>
+        </tr>
+        <tr id="jtagvb43l2">
+          <th scope="row">jtagvb43l2</th>
+          <td>9.85</td>
+          <td>
+            <time datetime="2021-05-04T04:34:42.369Z">5/4/2021</time>
+          </td>
+        </tr>
+        <tr id="asr023vldo7">
+          <th scope="row">asr023vldo7</th>
+          <td>7.70</td>
+          <td>
+            <time datetime="2021-04-26T09:48:08.052Z">4/26/2021</time>
+          </td>
+        </tr>
+        <tr id="qudkbwa3r7p">
+          <th scope="row">qudkbwa3r7p</th>
+          <td>5.26</td>
+          <td>
+            <time datetime="2021-04-11T19:15:10.241Z">4/11/2021</time>
+          </td>
+        </tr>
+        <tr id="q6jlb4t8sn">
+          <th scope="row">q6jlb4t8sn</th>
+          <td>12.18</td>
+          <td>
+            <time datetime="2021-03-31T04:25:40.682Z">3/31/2021</time>
+          </td>
+        </tr>
+        <tr id="megdutou29b">
+          <th scope="row">megdutou29b</th>
+          <td>6.95</td>
+          <td>
+            <time datetime="2021-03-29T04:22:40.882Z">3/29/2021</time>
+          </td>
+        </tr>
+        <tr id="v7bihve2ke">
+          <th scope="row">v7bihve2ke</th>
+          <td>13.66</td>
+          <td>
+            <time datetime="2021-03-25T06:51:18.668Z">3/25/2021</time>
+          </td>
+        </tr>
+        <tr id="8nhu5zmzta3">
+          <th scope="row">8nhu5zmzta3</th>
+          <td>0.44</td>
+          <td>
+            <time datetime="2021-03-24T08:54:03.960Z">3/24/2021</time>
+          </td>
+        </tr>
+        <tr id="afhdpo7kjc">
+          <th scope="row">afhdpo7kjc</th>
+          <td>17.11</td>
+          <td>
+            <time datetime="2021-03-22T03:19:32.421Z">3/22/2021</time>
+          </td>
+        </tr>
+        <tr id="vsxt89vz0t">
+          <th scope="row">vsxt89vz0t</th>
+          <td>11.34</td>
+          <td>
+            <time datetime="2021-03-20T13:37:21.172Z">3/20/2021</time>
+          </td>
+        </tr>
+        <tr id="hufadj1is6">
+          <th scope="row">hufadj1is6</th>
+          <td>11.46</td>
+          <td>
+            <time datetime="2021-03-15T00:59:11.128Z">3/15/2021</time>
+          </td>
+        </tr>
+        <tr id="dxr0kelmzr">
+          <th scope="row">dxr0kelmzr</th>
+          <td>3.19</td>
+          <td>
+            <time datetime="2021-03-11T04:10:31.920Z">3/11/2021</time>
+          </td>
+        </tr>
+        <tr id="fmk5ew6g95g">
+          <th scope="row">fmk5ew6g95g</th>
+          <td>18.22</td>
+          <td>
+            <time datetime="2021-02-21T11:27:18.980Z">2/21/2021</time>
+          </td>
+        </tr>
+        <tr id="knh69xypsra">
+          <th scope="row">knh69xypsra</th>
+          <td>7.57</td>
+          <td>
+            <time datetime="2021-02-18T09:05:59.398Z">2/18/2021</time>
+          </td>
+        </tr>
+        <tr id="sa609b0osxk">
+          <th scope="row">sa609b0osxk</th>
+          <td>13.93</td>
+          <td>
+            <time datetime="2021-02-16T01:44:51.733Z">2/16/2021</time>
+          </td>
+        </tr>
+        <tr id="bi85t1kbuvs">
+          <th scope="row">bi85t1kbuvs</th>
+          <td>6.24</td>
+          <td>
+            <time datetime="2021-02-05T17:47:55.165Z">2/5/2021</time>
+          </td>
+        </tr>
+        <tr id="smhxm27d68s">
+          <th scope="row">smhxm27d68s</th>
+          <td>4.75</td>
+          <td>
+            <time datetime="2021-01-25T08:46:36.698Z">1/25/2021</time>
+          </td>
+        </tr>
+        <tr id="mqyzngvz76">
+          <th scope="row">mqyzngvz76</th>
+          <td>14.68</td>
+          <td>
+            <time datetime="2021-01-24T16:37:59.185Z">1/24/2021</time>
+          </td>
+        </tr>
+        <tr id="6mpr1vqh317">
+          <th scope="row">6mpr1vqh317</th>
+          <td>9.01</td>
+          <td>
+            <time datetime="2021-01-24T05:31:57.970Z">1/24/2021</time>
+          </td>
+        </tr>
+        <tr id="yvubz1q889">
+          <th scope="row">yvubz1q889</th>
+          <td>9.64</td>
+          <td>
+            <time datetime="2021-01-22T18:06:43.141Z">1/22/2021</time>
+          </td>
+        </tr>
+        <tr id="fj572x7w14">
+          <th scope="row">fj572x7w14</th>
+          <td>10.28</td>
+          <td>
+            <time datetime="2021-01-20T08:30:28.012Z">1/20/2021</time>
+          </td>
+        </tr>
+        <tr id="w13r7s0b6ap">
+          <th scope="row">w13r7s0b6ap</th>
+          <td>2.84</td>
+          <td>
+            <time datetime="2021-01-15T20:24:02.004Z">1/15/2021</time>
+          </td>
+        </tr>
+        <tr id="ujb7v9wlso">
+          <th scope="row">ujb7v9wlso</th>
+          <td>1.44</td>
+          <td>
+            <time datetime="2021-01-14T18:43:26.088Z">1/14/2021</time>
+          </td>
+        </tr>
+        <tr id="y7pnit46de">
+          <th scope="row">y7pnit46de</th>
+          <td>13.37</td>
+          <td>
+            <time datetime="2021-01-13T08:57:01.400Z">1/13/2021</time>
+          </td>
+        </tr>
+        <tr id="u466p1esusf">
+          <th scope="row">u466p1esusf</th>
+          <td>19.29</td>
+          <td>
+            <time datetime="2021-01-11T23:44:04.384Z">1/12/2021</time>
+          </td>
+        </tr>
+        <tr id="v8je7qa2nqm">
+          <th scope="row">v8je7qa2nqm</th>
+          <td>12.59</td>
+          <td>
+            <time datetime="2021-01-09T04:31:41.361Z">1/9/2021</time>
+          </td>
+        </tr>
+        <tr id="0p5ihpqjn7i">
+          <th scope="row">0p5ihpqjn7i</th>
+          <td>0.42</td>
+          <td>
+            <time datetime="2021-01-08T12:38:43.736Z">1/8/2021</time>
+          </td>
+        </tr>
+        <tr id="72abwv3gy0v">
+          <th scope="row">72abwv3gy0v</th>
+          <td>12.90</td>
+          <td>
+            <time datetime="2021-01-07T04:32:18.806Z">1/7/2021</time>
+          </td>
+        </tr>
+        <tr id="el3n5e306vi">
+          <th scope="row">el3n5e306vi</th>
+          <td>15.64</td>
+          <td>
+            <time datetime="2021-01-05T12:18:03.984Z">1/5/2021</time>
+          </td>
+        </tr>
+        <tr id="6s9tttntlsm">
+          <th scope="row">6s9tttntlsm</th>
+          <td>11.06</td>
+          <td>
+            <time datetime="2021-01-01T09:35:53.758Z">1/1/2021</time>
+          </td>
+        </tr>
+        <tr id="2wvsqxbs9m6">
+          <th scope="row">2wvsqxbs9m6</th>
+          <td>8.41</td>
+          <td>
+            <time datetime="2020-12-31T16:42:58.687Z">12/31/2020</time>
+          </td>
+        </tr>
+        <tr id="klzdj1odoz8">
+          <th scope="row">klzdj1odoz8</th>
+          <td>18.85</td>
+          <td>
+            <time datetime="2020-12-28T04:53:07.546Z">12/28/2020</time>
+          </td>
+        </tr>
+        <tr id="hyf1g8ha9as">
+          <th scope="row">hyf1g8ha9as</th>
+          <td>0.98</td>
+          <td>
+            <time datetime="2020-12-28T04:49:55.108Z">12/28/2020</time>
+          </td>
+        </tr>
+        <tr id="g080pb32xk">
+          <th scope="row">g080pb32xk</th>
+          <td>19.52</td>
+          <td>
+            <time datetime="2020-12-27T03:07:00.270Z">12/27/2020</time>
+          </td>
+        </tr>
+        <tr id="uqoc1qcu8q8">
+          <th scope="row">uqoc1qcu8q8</th>
+          <td>4.87</td>
+          <td>
+            <time datetime="2020-12-21T17:16:58.827Z">12/21/2020</time>
+          </td>
+        </tr>
+        <tr id="v4bd1ubflh">
+          <th scope="row">v4bd1ubflh</th>
+          <td>14.10</td>
+          <td>
+            <time datetime="2020-12-19T10:59:44.811Z">12/19/2020</time>
+          </td>
+        </tr>
+        <tr id="z5kpftegwan">
+          <th scope="row">z5kpftegwan</th>
+          <td>0.30</td>
+          <td>
+            <time datetime="2020-12-15T09:41:30.410Z">12/15/2020</time>
+          </td>
+        </tr>
+        <tr id="5oyk1cl8bjm">
+          <th scope="row">5oyk1cl8bjm</th>
+          <td>12.64</td>
+          <td>
+            <time datetime="2020-12-12T11:52:28.134Z">12/12/2020</time>
+          </td>
+        </tr>
+        <tr id="60gswdpoykr">
+          <th scope="row">60gswdpoykr</th>
+          <td>7.46</td>
+          <td>
+            <time datetime="2020-11-30T19:38:17.805Z">11/30/2020</time>
+          </td>
+        </tr>
+        <tr id="z7yqpya75o">
+          <th scope="row">z7yqpya75o</th>
+          <td>5.37</td>
+          <td>
+            <time datetime="2020-11-30T10:54:23.157Z">11/30/2020</time>
+          </td>
+        </tr>
+        <tr id="ga27t2pw514">
+          <th scope="row">ga27t2pw514</th>
+          <td>16.78</td>
+          <td>
+            <time datetime="2020-11-23T15:00:02.039Z">11/23/2020</time>
+          </td>
+        </tr>
+        <tr id="btav1d5pfmt">
+          <th scope="row">btav1d5pfmt</th>
+          <td>1.09</td>
+          <td>
+            <time datetime="2020-11-21T04:25:01.511Z">11/21/2020</time>
+          </td>
+        </tr>
+        <tr id="b0yzzkg3drg">
+          <th scope="row">b0yzzkg3drg</th>
+          <td>19.66</td>
+          <td>
+            <time datetime="2020-11-20T19:40:45.160Z">11/20/2020</time>
+          </td>
+        </tr>
+        <tr id="meorlrza35q">
+          <th scope="row">meorlrza35q</th>
+          <td>10.37</td>
+          <td>
+            <time datetime="2020-11-20T02:26:37.094Z">11/20/2020</time>
+          </td>
+        </tr>
+        <tr id="h4cahanoxr">
+          <th scope="row">h4cahanoxr</th>
+          <td>19.69</td>
+          <td>
+            <time datetime="2020-11-19T21:03:36.225Z">11/19/2020</time>
+          </td>
+        </tr>
+        <tr id="iuupmayede">
+          <th scope="row">iuupmayede</th>
+          <td>13.45</td>
+          <td>
+            <time datetime="2020-11-19T00:37:02.056Z">11/19/2020</time>
+          </td>
+        </tr>
+        <tr id="xm0lptsnoxd">
+          <th scope="row">xm0lptsnoxd</th>
+          <td>2.55</td>
+          <td>
+            <time datetime="2020-11-15T05:13:26.209Z">11/15/2020</time>
+          </td>
+        </tr>
+        <tr id="c0qoem84gqu">
+          <th scope="row">c0qoem84gqu</th>
+          <td>6.68</td>
+          <td>
+            <time datetime="2020-11-15T03:11:57.116Z">11/15/2020</time>
+          </td>
+        </tr>
+        <tr id="4h6wy8m6ab8">
+          <th scope="row">4h6wy8m6ab8</th>
+          <td>13.99</td>
+          <td>
+            <time datetime="2020-11-12T08:26:49.782Z">11/12/2020</time>
+          </td>
+        </tr>
+        <tr id="wsiwszvw1qp">
+          <th scope="row">wsiwszvw1qp</th>
+          <td>2.94</td>
+          <td>
+            <time datetime="2020-11-07T21:45:15.682Z">11/7/2020</time>
+          </td>
+        </tr>
+        <tr id="6yit173qcrg">
+          <th scope="row">6yit173qcrg</th>
+          <td>0.61</td>
+          <td>
+            <time datetime="2020-11-07T01:16:52.551Z">11/7/2020</time>
+          </td>
+        </tr>
+        <tr id="o3a0aykotvr">
+          <th scope="row">o3a0aykotvr</th>
+          <td>17.93</td>
+          <td>
+            <time datetime="2020-10-31T12:23:17.477Z">10/31/2020</time>
+          </td>
+        </tr>
+        <tr id="sr9ypagexw">
+          <th scope="row">sr9ypagexw</th>
+          <td>15.99</td>
+          <td>
+            <time datetime="2020-10-24T19:15:08.919Z">10/24/2020</time>
+          </td>
+        </tr>
+        <tr id="riuysjlsnsp">
+          <th scope="row">riuysjlsnsp</th>
+          <td>15.75</td>
+          <td>
+            <time datetime="2020-10-21T16:59:55.304Z">10/21/2020</time>
+          </td>
+        </tr>
+        <tr id="vjbjd68cjnr">
+          <th scope="row">vjbjd68cjnr</th>
+          <td>7.42</td>
+          <td>
+            <time datetime="2020-10-19T16:15:58.583Z">10/19/2020</time>
+          </td>
+        </tr>
+        <tr id="06eifdz77oly">
+          <th scope="row">06eifdz77oly</th>
+          <td>15.59</td>
+          <td>
+            <time datetime="2020-10-16T03:51:26.765Z">10/16/2020</time>
+          </td>
+        </tr>
+        <tr id="yza0iwbfuyr">
+          <th scope="row">yza0iwbfuyr</th>
+          <td>2.91</td>
+          <td>
+            <time datetime="2020-10-15T14:56:38.691Z">10/15/2020</time>
+          </td>
+        </tr>
+        <tr id="9ynmcrol1yv">
+          <th scope="row">9ynmcrol1yv</th>
+          <td>1.68</td>
+          <td>
+            <time datetime="2020-10-12T14:51:34.158Z">10/12/2020</time>
+          </td>
+        </tr>
+        <tr id="nxemxtw2ed">
+          <th scope="row">nxemxtw2ed</th>
+          <td>0.92</td>
+          <td>
+            <time datetime="2020-10-10T19:17:15.448Z">10/10/2020</time>
+          </td>
+        </tr>
+        <tr id="t0fwbyc5oro">
+          <th scope="row">t0fwbyc5oro</th>
+          <td>13.86</td>
+          <td>
+            <time datetime="2020-10-07T17:50:11.338Z">10/7/2020</time>
+          </td>
+        </tr>
+        <tr id="fht35i7v4f7">
+          <th scope="row">fht35i7v4f7</th>
+          <td>7.33</td>
+          <td>
+            <time datetime="2020-10-03T16:05:46.955Z">10/3/2020</time>
+          </td>
+        </tr>
+        <tr id="g8y8n2gdt0n">
+          <th scope="row">g8y8n2gdt0n</th>
+          <td>0.88</td>
+          <td>
+            <time datetime="2020-09-27T00:36:36.319Z">9/27/2020</time>
+          </td>
+        </tr>
+        <tr id="5qhaludc1um">
+          <th scope="row">5qhaludc1um</th>
+          <td>12.35</td>
+          <td>
+            <time datetime="2020-09-19T04:55:52.874Z">9/19/2020</time>
+          </td>
+        </tr>
+        <tr id="s4unfratd8">
+          <th scope="row">s4unfratd8</th>
+          <td>19.17</td>
+          <td>
+            <time datetime="2020-09-19T03:19:21.960Z">9/19/2020</time>
+          </td>
+        </tr>
+        <tr id="fymcoxmwc5w">
+          <th scope="row">fymcoxmwc5w</th>
+          <td>18.29</td>
+          <td>
+            <time datetime="2020-09-18T12:17:44.616Z">9/18/2020</time>
+          </td>
+        </tr>
+        <tr id="luvrhpg7cc">
+          <th scope="row">luvrhpg7cc</th>
+          <td>8.61</td>
+          <td>
+            <time datetime="2020-09-13T14:12:13.223Z">9/13/2020</time>
+          </td>
+        </tr>
+        <tr id="5vaun16d9r">
+          <th scope="row">5vaun16d9r</th>
+          <td>12.94</td>
+          <td>
+            <time datetime="2020-09-09T17:04:17.267Z">9/9/2020</time>
+          </td>
+        </tr>
+        <tr id="6o04lc7k9c8">
+          <th scope="row">6o04lc7k9c8</th>
+          <td>14.04</td>
+          <td>
+            <time datetime="2020-09-09T16:22:45.490Z">9/9/2020</time>
+          </td>
+        </tr>
+        <tr id="60cts7mb8co">
+          <th scope="row">60cts7mb8co</th>
+          <td>18.99</td>
+          <td>
+            <time datetime="2020-09-05T09:06:40.743Z">9/5/2020</time>
+          </td>
+        </tr>
+        <tr id="l9xkmz3o57s">
+          <th scope="row">l9xkmz3o57s</th>
+          <td>15.36</td>
+          <td>
+            <time datetime="2020-08-26T02:07:31.846Z">8/26/2020</time>
+          </td>
+        </tr>
+        <tr id="a9d0cykd3m5">
+          <th scope="row">a9d0cykd3m5</th>
+          <td>4.73</td>
+          <td>
+            <time datetime="2020-08-22T13:23:52.640Z">8/22/2020</time>
+          </td>
+        </tr>
+        <tr id="uhl615af27">
+          <th scope="row">uhl615af27</th>
+          <td>17.13</td>
+          <td>
+            <time datetime="2020-08-18T01:48:04.053Z">8/18/2020</time>
+          </td>
+        </tr>
+        <tr id="8hmezlscdmg">
+          <th scope="row">8hmezlscdmg</th>
+          <td>6.93</td>
+          <td>
+            <time datetime="2020-08-17T19:13:54.855Z">8/17/2020</time>
+          </td>
+        </tr>
+        <tr id="th74toct01">
+          <th scope="row">th74toct01</th>
+          <td>15.71</td>
+          <td>
+            <time datetime="2020-08-12T07:22:48.910Z">8/12/2020</time>
+          </td>
+        </tr>
+        <tr id="qdpeermctkd">
+          <th scope="row">qdpeermctkd</th>
+          <td>13.21</td>
+          <td>
+            <time datetime="2020-08-07T05:14:05.370Z">8/7/2020</time>
+          </td>
+        </tr>
+        <tr id="phbz1kxl7xb">
+          <th scope="row">phbz1kxl7xb</th>
+          <td>8.19</td>
+          <td>
+            <time datetime="2020-07-30T17:44:09.290Z">7/30/2020</time>
+          </td>
+        </tr>
+        <tr id="1pnw1dgb81i">
+          <th scope="row">1pnw1dgb81i</th>
+          <td>5.61</td>
+          <td>
+            <time datetime="2020-07-26T15:07:22.252Z">7/26/2020</time>
+          </td>
+        </tr>
+        <tr id="4uu4gwr3a3c">
+          <th scope="row">4uu4gwr3a3c</th>
+          <td>14.14</td>
+          <td>
+            <time datetime="2020-07-19T10:13:56.534Z">7/19/2020</time>
+          </td>
+        </tr>
+        <tr id="73rfmuc9cch">
+          <th scope="row">73rfmuc9cch</th>
+          <td>17.00</td>
+          <td>
+            <time datetime="2020-07-17T13:07:36.301Z">7/17/2020</time>
+          </td>
+        </tr>
+        <tr id="xj5sffz83u">
+          <th scope="row">xj5sffz83u</th>
+          <td>0.77</td>
+          <td>
+            <time datetime="2020-07-16T17:10:47.832Z">7/16/2020</time>
+          </td>
+        </tr>
+        <tr id="t757llwecd9">
+          <th scope="row">t757llwecd9</th>
+          <td>14.43</td>
+          <td>
+            <time datetime="2020-07-11T10:47:27.034Z">7/11/2020</time>
+          </td>
+        </tr>
+        <tr id="802pprahzfe">
+          <th scope="row">802pprahzfe</th>
+          <td>9.81</td>
+          <td>
+            <time datetime="2020-07-03T12:02:36.284Z">7/3/2020</time>
+          </td>
+        </tr>
+        <tr id="onn99ms0ioj">
+          <th scope="row">onn99ms0ioj</th>
+          <td>4.85</td>
+          <td>
+            <time datetime="2020-07-03T11:34:15.218Z">7/3/2020</time>
+          </td>
+        </tr>
+        <tr id="uvxe7thryk">
+          <th scope="row">uvxe7thryk</th>
+          <td>0.83</td>
+          <td>
+            <time datetime="2020-07-02T06:04:45.504Z">7/2/2020</time>
+          </td>
+        </tr>
+        <tr id="e30xkmxcowf">
+          <th scope="row">e30xkmxcowf</th>
+          <td>9.01</td>
+          <td>
+            <time datetime="2020-06-29T01:11:28.951Z">6/29/2020</time>
+          </td>
+        </tr>
+        <tr id="bp614sieaa9">
+          <th scope="row">bp614sieaa9</th>
+          <td>13.40</td>
+          <td>
+            <time datetime="2020-06-28T17:17:55.064Z">6/28/2020</time>
+          </td>
+        </tr>
+        <tr id="yu6u40ttx6">
+          <th scope="row">yu6u40ttx6</th>
+          <td>13.00</td>
+          <td>
+            <time datetime="2020-06-27T22:15:10.662Z">6/28/2020</time>
+          </td>
+        </tr>
+        <tr id="fghj1l83kln">
+          <th scope="row">fghj1l83kln</th>
+          <td>12.38</td>
+          <td>
+            <time datetime="2020-06-21T13:28:23.178Z">6/21/2020</time>
+          </td>
+        </tr>
+        <tr id="mzg7mju4ufe">
+          <th scope="row">mzg7mju4ufe</th>
+          <td>2.21</td>
+          <td>
+            <time datetime="2020-06-18T13:16:57.366Z">6/18/2020</time>
+          </td>
+        </tr>
+        <tr id="4d17wdz2cwl">
+          <th scope="row">4d17wdz2cwl</th>
+          <td>7.15</td>
+          <td>
+            <time datetime="2020-06-16T04:11:33.846Z">6/16/2020</time>
+          </td>
+        </tr>
+        <tr id="2saulhiduxk">
+          <th scope="row">2saulhiduxk</th>
+          <td>0.28</td>
+          <td>
+            <time datetime="2020-06-15T02:59:19.141Z">6/15/2020</time>
+          </td>
+        </tr>
+        <tr id="i27ddlsujjm">
+          <th scope="row">i27ddlsujjm</th>
+          <td>1.03</td>
+          <td>
+            <time datetime="2020-06-13T15:21:14.525Z">6/13/2020</time>
+          </td>
+        </tr>
+        <tr id="15okyk8s019">
+          <th scope="row">15okyk8s019</th>
+          <td>9.29</td>
+          <td>
+            <time datetime="2020-06-13T01:58:33.375Z">6/13/2020</time>
+          </td>
+        </tr>
+        <tr id="yu1eodgumy">
+          <th scope="row">yu1eodgumy</th>
+          <td>8.58</td>
+          <td>
+            <time datetime="2020-06-12T18:57:46.010Z">6/12/2020</time>
+          </td>
+        </tr>
+        <tr id="swkyd2ixm9">
+          <th scope="row">swkyd2ixm9</th>
+          <td>17.50</td>
+          <td>
+            <time datetime="2020-06-10T19:11:42.710Z">6/10/2020</time>
+          </td>
+        </tr>
+        <tr id="dybnqlbc5yq">
+          <th scope="row">dybnqlbc5yq</th>
+          <td>16.80</td>
+          <td>
+            <time datetime="2020-06-10T13:25:21.052Z">6/10/2020</time>
+          </td>
+        </tr>
+        <tr id="vwscjzr5qgo">
+          <th scope="row">vwscjzr5qgo</th>
+          <td>16.63</td>
+          <td>
+            <time datetime="2020-06-01T03:15:11.925Z">6/1/2020</time>
+          </td>
+        </tr>
+        <tr id="yjh3v0zs97p">
+          <th scope="row">yjh3v0zs97p</th>
+          <td>8.16</td>
+          <td>
+            <time datetime="2020-05-23T06:47:59.512Z">5/23/2020</time>
+          </td>
+        </tr>
+        <tr id="lnmya9bybuf">
+          <th scope="row">lnmya9bybuf</th>
+          <td>9.28</td>
+          <td>
+            <time datetime="2020-05-20T21:14:04.399Z">5/20/2020</time>
+          </td>
+        </tr>
+        <tr id="nklksr7tckh">
+          <th scope="row">nklksr7tckh</th>
+          <td>8.14</td>
+          <td>
+            <time datetime="2020-05-16T15:27:54.939Z">5/16/2020</time>
+          </td>
+        </tr>
+        <tr id="di37mhom6w7">
+          <th scope="row">di37mhom6w7</th>
+          <td>4.17</td>
+          <td>
+            <time datetime="2020-05-15T16:15:09.897Z">5/15/2020</time>
+          </td>
+        </tr>
+        <tr id="m9ufcdpecvm">
+          <th scope="row">m9ufcdpecvm</th>
+          <td>8.58</td>
+          <td>
+            <time datetime="2020-05-13T19:25:57.744Z">5/13/2020</time>
+          </td>
+        </tr>
+        <tr id="71b500ykivu">
+          <th scope="row">71b500ykivu</th>
+          <td>9.65</td>
+          <td>
+            <time datetime="2020-05-13T08:57:52.765Z">5/13/2020</time>
+          </td>
+        </tr>
+        <tr id="j04co9stsw">
+          <th scope="row">j04co9stsw</th>
+          <td>0.31</td>
+          <td>
+            <time datetime="2020-05-04T12:54:45.510Z">5/4/2020</time>
+          </td>
+        </tr>
+        <tr id="t8415wyud5g">
+          <th scope="row">t8415wyud5g</th>
+          <td>12.12</td>
+          <td>
+            <time datetime="2020-04-27T01:22:51.769Z">4/27/2020</time>
+          </td>
+        </tr>
+        <tr id="m8c4btcdlm">
+          <th scope="row">m8c4btcdlm</th>
+          <td>19.39</td>
+          <td>
+            <time datetime="2020-04-21T16:44:14.937Z">4/21/2020</time>
+          </td>
+        </tr>
+        <tr id="1irhjkvkzoa">
+          <th scope="row">1irhjkvkzoa</th>
+          <td>14.80</td>
+          <td>
+            <time datetime="2020-04-11T20:11:31.133Z">4/11/2020</time>
+          </td>
+        </tr>
+        <tr id="5ev5vhk5518">
+          <th scope="row">5ev5vhk5518</th>
+          <td>6.05</td>
+          <td>
+            <time datetime="2020-04-03T07:32:57.433Z">4/3/2020</time>
+          </td>
+        </tr>
+        <tr id="vnrjyln3td">
+          <th scope="row">vnrjyln3td</th>
+          <td>11.66</td>
+          <td>
+            <time datetime="2020-04-02T05:37:30.057Z">4/2/2020</time>
+          </td>
+        </tr>
+        <tr id="gcb64ck1r9g">
+          <th scope="row">gcb64ck1r9g</th>
+          <td>1.12</td>
+          <td>
+            <time datetime="2020-03-31T15:13:10.892Z">3/31/2020</time>
+          </td>
+        </tr>
+        <tr id="adah7zyt995">
+          <th scope="row">adah7zyt995</th>
+          <td>13.55</td>
+          <td>
+            <time datetime="2020-03-28T20:52:17.879Z">3/28/2020</time>
+          </td>
+        </tr>
+        <tr id="1dm6me3ni1n">
+          <th scope="row">1dm6me3ni1n</th>
+          <td>13.96</td>
+          <td>
+            <time datetime="2020-03-28T16:42:58.838Z">3/28/2020</time>
+          </td>
+        </tr>
+        <tr id="ij7b3feb2rs">
+          <th scope="row">ij7b3feb2rs</th>
+          <td>5.85</td>
+          <td>
+            <time datetime="2020-03-27T22:59:51.872Z">3/27/2020</time>
+          </td>
+        </tr>
+        <tr id="h8nhz11vml7">
+          <th scope="row">h8nhz11vml7</th>
+          <td>17.32</td>
+          <td>
+            <time datetime="2020-03-27T11:14:46.557Z">3/27/2020</time>
+          </td>
+        </tr>
+        <tr id="88tq528xi3e">
+          <th scope="row">88tq528xi3e</th>
+          <td>17.20</td>
+          <td>
+            <time datetime="2020-03-18T07:18:15.415Z">3/18/2020</time>
+          </td>
+        </tr>
+        <tr id="2z2h5bk1nex">
+          <th scope="row">2z2h5bk1nex</th>
+          <td>1.83</td>
+          <td>
+            <time datetime="2020-03-02T18:31:49.161Z">3/2/2020</time>
+          </td>
+        </tr>
+        <tr id="dggdof71y3k">
+          <th scope="row">dggdof71y3k</th>
+          <td>8.91</td>
+          <td>
+            <time datetime="2020-02-22T00:58:55.943Z">2/22/2020</time>
+          </td>
+        </tr>
+        <tr id="e6p6yaua75n">
+          <th scope="row">e6p6yaua75n</th>
+          <td>8.89</td>
+          <td>
+            <time datetime="2020-02-19T15:34:21.314Z">2/19/2020</time>
+          </td>
+        </tr>
+        <tr id="7k21mwwnz1e">
+          <th scope="row">7k21mwwnz1e</th>
+          <td>2.36</td>
+          <td>
+            <time datetime="2020-02-17T08:19:44.624Z">2/17/2020</time>
+          </td>
+        </tr>
+        <tr id="58828xobc6m">
+          <th scope="row">58828xobc6m</th>
+          <td>19.00</td>
+          <td>
+            <time datetime="2020-02-15T17:38:14.382Z">2/15/2020</time>
+          </td>
+        </tr>
+        <tr id="dwxr9rm7rks">
+          <th scope="row">dwxr9rm7rks</th>
+          <td>2.59</td>
+          <td>
+            <time datetime="2020-02-15T15:32:24.155Z">2/15/2020</time>
+          </td>
+        </tr>
+        <tr id="wzo2ehl6xnl">
+          <th scope="row">wzo2ehl6xnl</th>
+          <td>13.40</td>
+          <td>
+            <time datetime="2020-02-15T08:17:03.849Z">2/15/2020</time>
+          </td>
+        </tr>
+        <tr id="j56oa14yped">
+          <th scope="row">j56oa14yped</th>
+          <td>15.99</td>
+          <td>
+            <time datetime="2020-02-11T23:35:10.122Z">2/12/2020</time>
+          </td>
+        </tr>
+        <tr id="1gtk9ifiyj3h">
+          <th scope="row">1gtk9ifiyj3h</th>
+          <td>2.90</td>
+          <td>
+            <time datetime="2020-02-11T10:42:13.401Z">2/11/2020</time>
+          </td>
+        </tr>
+        <tr id="lwp174xq7xd">
+          <th scope="row">lwp174xq7xd</th>
+          <td>16.66</td>
+          <td>
+            <time datetime="2020-02-06T09:08:16.096Z">2/6/2020</time>
+          </td>
+        </tr>
+        <tr id="5fryf1wej1q">
+          <th scope="row">5fryf1wej1q</th>
+          <td>5.84</td>
+          <td>
+            <time datetime="2020-01-31T17:38:14.856Z">1/31/2020</time>
+          </td>
+        </tr>
+        <tr id="ao1e0uy3yv">
+          <th scope="row">ao1e0uy3yv</th>
+          <td>9.72</td>
+          <td>
+            <time datetime="2020-01-31T05:21:00.190Z">1/31/2020</time>
+          </td>
+        </tr>
+        <tr id="olic6za0f1a">
+          <th scope="row">olic6za0f1a</th>
+          <td>19.23</td>
+          <td>
+            <time datetime="2020-01-09T04:16:46.788Z">1/9/2020</time>
+          </td>
+        </tr>
+        <tr id="wh7niy6nd9">
+          <th scope="row">wh7niy6nd9</th>
+          <td>19.06</td>
+          <td>
+            <time datetime="2019-12-28T15:00:19.821Z">12/28/2019</time>
+          </td>
+        </tr>
+        <tr id="6j8xmubv8jj">
+          <th scope="row">6j8xmubv8jj</th>
+          <td>18.49</td>
+          <td>
+            <time datetime="2019-12-25T20:38:54.059Z">12/25/2019</time>
+          </td>
+        </tr>
+        <tr id="411zi20p08a">
+          <th scope="row">411zi20p08a</th>
+          <td>8.88</td>
+          <td>
+            <time datetime="2019-12-25T13:54:07.977Z">12/25/2019</time>
+          </td>
+        </tr>
+        <tr id="mbd063p0oyp">
+          <th scope="row">mbd063p0oyp</th>
+          <td>16.23</td>
+          <td>
+            <time datetime="2019-12-24T08:49:57.198Z">12/24/2019</time>
+          </td>
+        </tr>
+        <tr id="txgpxe3h0ce">
+          <th scope="row">txgpxe3h0ce</th>
+          <td>11.88</td>
+          <td>
+            <time datetime="2019-12-23T19:02:07.622Z">12/23/2019</time>
+          </td>
+        </tr>
+        <tr id="hzhmn51zntv">
+          <th scope="row">hzhmn51zntv</th>
+          <td>3.16</td>
+          <td>
+            <time datetime="2019-12-23T07:15:33.516Z">12/23/2019</time>
+          </td>
+        </tr>
+        <tr id="92ajgu6co8f">
+          <th scope="row">92ajgu6co8f</th>
+          <td>13.91</td>
+          <td>
+            <time datetime="2019-12-22T18:45:40.867Z">12/22/2019</time>
+          </td>
+        </tr>
+        <tr id="iqqac8alnwm">
+          <th scope="row">iqqac8alnwm</th>
+          <td>18.50</td>
+          <td>
+            <time datetime="2019-12-14T23:49:38.671Z">12/15/2019</time>
+          </td>
+        </tr>
+        <tr id="cnxsq2k6xkk">
+          <th scope="row">cnxsq2k6xkk</th>
+          <td>9.15</td>
+          <td>
+            <time datetime="2019-12-12T11:26:18.271Z">12/12/2019</time>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
