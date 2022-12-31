@@ -3,27 +3,26 @@
 
   let
     $tableBody = document.querySelector('tbody'),
-    $$rows = Array.from($tableBody.children),
     originalHTML = $tableBody.innerHTML,
     // by price ascending
     sort = () => {
+      let $$rows = Array.from($tableBody.children)
       $$rows.sort(($a, $b) => $a.__price - $b.__price)
       for (let $ of $$rows) $tableBody.append($)
     },
     // only purchases made in march any year
     filter = () => {
-      for (let $ of $$rows)
+      for (let $ of $tableBody.children)
         $.hidden = $.__month !== 3
     },
     prepare = () => {
-      for (let $ of $$rows) {
+      for (let $ of $tableBody.children) {
         $.__price = Number($.children[1].textContent)
         $.__month = new Date($.children[2].firstElementChild.getAttribute('datetime')).getMonth()
       }
     },
     teardown = () => new Promise(res => {
       $tableBody.innerHTML = originalHTML
-      $$rows = Array.from($tableBody.children)
       prepare()
       setTimeout(res, 1)
     })
