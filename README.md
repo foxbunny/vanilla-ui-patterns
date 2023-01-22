@@ -37,6 +37,11 @@ the comments within the sources.
 
 The following examples are available:
 
+### [`click-outside`](./click-outside)
+
+Demonstration of using custom elements as an event boundary to handle clicks 
+occurring outside it.
+
 ### [`dark-mode`](./dark-mode)
 
 Example of a dark mode toggle with `localStorage` persistence and CSS variables.
