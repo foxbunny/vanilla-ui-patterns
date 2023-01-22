@@ -20,7 +20,7 @@
     onclick: openDialog,
     hidden: false,
   })
-  $closeDialog.onclick = $dialogClickTrap.onclick = onDialogClose
+  $closeDialog.onclick = $dialogClickTrap.onclick = closeDialog
   window.addEventListener('keyup', ev => {
     if (ev.code !== 'Escape') return
     if (!$dialog.open) return
