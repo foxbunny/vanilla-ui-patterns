@@ -41,7 +41,7 @@
         altKey: ev.altKey,
         metaKey: ev.metaKey,
         button: ev.button,
-        relatedTarget: ev.relatedTarget
+        relatedTarget: ev.relatedTarget,
       })
       // Having the actual target is more useful
       Object.defineProperty(event, 'target', { value: ev.target, writable: false })
@@ -52,25 +52,13 @@
   })
 
   let
-    $openDialog = document.getElementById('open-dialog'),
     $clickBoundary = document.getElementById('click-boundary')
 
-  $openDialog.onclick = () => {
-    $clickBoundary.firstElementChild.open = true
-    // Only assign the clickoutside handler *after* the dialog is open,
-    // otherwise it would close immediately as soon as we try to open it. The
-    // reason is that the click on the "Open dialog" button also counts as a
-    // clickoutside.
-    setTimeout(() => $clickBoundary.onclickoutside = ev => {
-      // As a special case, we've clicked on a button that opens the dialog.
-      // In this case, we can simply ignore the event as handling it normally
-      // would cause wonky behavior.
-      if (ev.target === $openDialog) return
+  $clickBoundary.onclickoutside = $clickBoundary.querySelector('button').onclick = ev => {
+    $clickBoundary.firstElementChild.open = false
 
-      $clickBoundary.firstElementChild.open = false
-
-      // We no longer need to handle these events when the dialog is not open.
-      delete $clickBoundary.onclickoutside
-    }, 100)
+    // We no longer need to handle these events when the dialog is not open.
+    delete $clickBoundary.onclickoutside
   }
+
 }

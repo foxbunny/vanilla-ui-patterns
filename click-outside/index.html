@@ -12,16 +12,17 @@
       <h1>Click outside</h1>
     </header>
 
-    <button id="open-dialog">Open dialog</button>
-
     <click-boundary id="click-boundary">
-      <dialog>
-        <h2>I'm a dialog</h2>
+      <dialog open>
+        <h2>I'm a note</h2>
 
         <p>
-          Clicking anywhere within the dialog content should keep it open, but
-          clicking outside it should close it immediately.
+          Clicking anywhere within the dialog content except the button should
+          keep it open, but clicking the button or somewhere outside the dialog
+          should close it immediately.
         </p>
+
+        <button>Got it</button>
       </dialog>
     </click-boundary>
   </body>

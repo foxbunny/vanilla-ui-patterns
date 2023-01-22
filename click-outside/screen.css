@@ -1,11 +1,11 @@
-#click-boundary dialog[open] {
+dialog[open] {
   position: fixed;
-  top: 50vh;
-  left: 50vw;
-  max-width: 80vw;
-  max-height: 80vh;
-  transform: translate(-50%, -50%);
+  bottom: 2rem;
+  left: auto;
+  right: 2rem;
+  max-width: 40ch;
   background: white;
-  border: none;
+  padding: 1rem;
+  border: 2px solid black;
   box-shadow: 0 1em 2em rgba(0, 0, 0, 0.2);
 }
