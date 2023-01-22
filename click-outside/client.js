@@ -28,8 +28,10 @@
 
     documentLevelClickListener(ev) {
       if (ev.clickBoundary === this) return
-      // Copy the original mouse event's data and add it to our custom 'clickoutside' event
       let event = Object.assign(new Event('clickoutside'), {
+        // Copy the original mouse event's data and add it to our custom
+        // 'clickoutside' event. (This is optional, and only useful if you
+        // actually need this information.)
         view: ev.view,
         detail: ev.detail,
         screenX: ev.screenX,
@@ -43,7 +45,7 @@
         button: ev.button,
         relatedTarget: ev.relatedTarget,
       })
-      // Having the actual target is more useful
+      // Having the actual target is more useful (and this is also optional)
       Object.defineProperty(event, 'target', { value: ev.target, writable: false })
       this.dispatchEvent(event)
       // Handle the onclickoutside method if any so that it behaves more like a native element
